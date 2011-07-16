@@ -21,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingsModule", "Modules\S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage.MSSQL", "Storage.MSSQL", "{A52D6004-D9F7-43D9-B84A-E00A0C3FD2A0}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\LIB\ImagesStoreSystem\ImagesStoreSystem.DBProvider\MSSQL\ClearDB.sql = ..\..\LIB\ImagesStoreSystem\ImagesStoreSystem.DBProvider\MSSQL\ClearDB.sql
-		..\..\LIB\ImagesStoreSystem\ImagesStoreSystem.DBProvider\MSSQL\CreateDB.sql = ..\..\LIB\ImagesStoreSystem\ImagesStoreSystem.DBProvider\MSSQL\CreateDB.sql
 		..\..\LIB\ImagesStoreSystem\ImagesStoreSystem.DBProvider\MSSQL\DB.sql = ..\..\LIB\ImagesStoreSystem\ImagesStoreSystem.DBProvider\MSSQL\DB.sql
 	EndProjectSection
 EndProject
