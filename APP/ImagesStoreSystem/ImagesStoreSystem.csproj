@@ -78,21 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ShellPresenter.cs" />
-    <Page Include="..\..\TEST\SatellitePlanerSession\ReciveSession\Themes\ExpressionLight.xaml">
-      <Link>Themes\ExpressionLight.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\ImagesStoreSystem2\Themes\GroupBoxStyle.xaml">
-      <Link>Themes\GroupBoxStyle.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\ImagesStoreSystem2\Themes\MainMenuStyle.xaml">
-      <Link>Themes\MainMenuStyle.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Shell.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,6 +90,10 @@
       <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\ExpressionLight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -154,17 +143,13 @@
     <Resource Include="PocketMap.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="..\ImagesStoreSystem2\Themes\texture.png">
-      <Link>Themes\texture.png</Link>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Languages\EN.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Languages\RU.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Themes\texture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

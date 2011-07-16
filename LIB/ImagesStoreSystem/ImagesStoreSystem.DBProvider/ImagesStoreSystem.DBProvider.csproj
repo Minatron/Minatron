@@ -63,9 +63,6 @@
     <Reference Include="NHibernate.ByteCode.LinFu">
       <HintPath>..\..\..\RELEASE\Lib\NHibernate\Required_For_LazyLoading\LinFu\NHibernate.ByteCode.LinFu.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate.Caches.Prevalence">
-      <HintPath>..\..\..\RELEASE\Lib\NHibernate\Caches\NHibernate.Caches.Prevalence\NHibernate.Caches.Prevalence.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>

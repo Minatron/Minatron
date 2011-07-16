@@ -22,7 +22,6 @@ namespace ImageStoreSystem.Infrastructure
 			public Control Control;
 		}
 
-		Control _content;
 		Stack<Content> _stack = new Stack<Content>();
 
 		public bool HasContent

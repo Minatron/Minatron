@@ -1,7 +1,8 @@
 ﻿using System.Windows.Input;
 using ImagesStoreSystem.DBProvider.Core;
 using Microsoft.Practices.Composite.Events;
-using WPF.Patterns.Commands;
+using Microsoft.Practices.Composite.Presentation.Commands;
+
 
 namespace CommonObjects
 {
@@ -13,7 +14,7 @@ namespace CommonObjects
 		void InitCommands()
 		{
 			ViewItemCommand = new DelegateCommand<object>((object obj) => OnViewCommandExecute(obj as T));
-			AddItemCommand = new DelegateCommand(() => OnAddCommandExecute());
+            AddItemCommand = new DelegateCommand<object>((object obj) => OnAddCommandExecute());
 		}
 
 		protected abstract void OnViewCommandExecute(T obj);

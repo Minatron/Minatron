@@ -32,10 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\TEST\ImagesStoreSystem\DBProvider.Tests\bin\Debug\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="MapWraper">
-      <HintPath>..\..\..\..\RELEASE\ImagesStoreSystem\LIB\MapWraper\MapWraper.dll</HintPath>
+      <HintPath>..\..\..\..\RELEASE\Lib\NHibernate\Required_Bins\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Composite">
       <HintPath>..\..\..\..\RELEASE\Lib\Prism\Desktop\Microsoft.Practices.Composite.dll</HintPath>
@@ -72,7 +69,6 @@
     <Compile Include="CommonHelper.cs" />
     <Compile Include="Converters\FileSizeToStringConverter.cs" />
     <Compile Include="Converters\FileTypeToStringConverter.cs" />
-    <Compile Include="Converters\InvertConverter.cs" />
     <Compile Include="Converters\SatelliteNumberConverter.cs" />
     <Compile Include="Converters\StationNumberConverter.cs" />
     <Compile Include="Filters\FilterPresenter.cs" />
@@ -82,10 +78,8 @@
     <Compile Include="Pages\EditablePagePresenter.cs" />
     <Compile Include="Converters\PageNumberConverter.cs" />
     <Compile Include="Pages\PagePresenter.cs" />
-    <Compile Include="PolygonPresenter.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PolygonSelector.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\LIB\ImagesStoreSystem\ImagesStoreSystem.DBProvider\ImagesStoreSystem.DBProvider.csproj">

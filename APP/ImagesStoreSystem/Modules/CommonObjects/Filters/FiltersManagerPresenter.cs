@@ -2,8 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ImagesStoreSystem.DBProvider.Core;
-using WPF.Patterns.Commands;
 using System.ComponentModel;
+using Microsoft.Practices.Composite.Presentation.Commands;
 
 namespace CommonObjects
 {
@@ -123,7 +123,7 @@ namespace CommonObjects
 						WasChanged = true;
 					}
 				});
-			RefreshCommand = new DelegateCommand(() => RefreshFiltersCollection());
+			RefreshCommand = new DelegateCommand<object>((o) => RefreshFiltersCollection());
 		}
 
 		public void RefreshFiltersCollection()

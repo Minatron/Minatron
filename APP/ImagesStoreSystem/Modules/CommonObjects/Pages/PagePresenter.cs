@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
 using ImagesStoreSystem.DBProvider.Core;
-using WPF.Patterns.Commands;
+
 using Microsoft.Practices.Composite.Events;
+using Microsoft.Practices.Composite.Presentation.Commands;
 
 namespace CommonObjects
 {
@@ -128,9 +129,9 @@ namespace CommonObjects
 
 		void InitCommands()
 		{
-			NextPageCommand = new DelegateCommand(() => ++PageNumber);
-			PrevPageCommand = new DelegateCommand(() => --PageNumber);
-			RefreshCommand = new DelegateCommand(() => Refresh());
+			NextPageCommand = new DelegateCommand<object>((o) => ++PageNumber);
+            PrevPageCommand = new DelegateCommand<object>((o) => --PageNumber);
+            RefreshCommand = new DelegateCommand<object>((o) => Refresh());
 		}
 
 		protected virtual void Refresh()

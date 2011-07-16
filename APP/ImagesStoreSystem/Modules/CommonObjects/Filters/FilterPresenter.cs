@@ -3,7 +3,7 @@ using System.Windows.Input;
 using ImagesStoreSystem.DBProvider.Core;
 using ImageStoreSystem.Infrastructure;
 using Microsoft.Practices.Composite.Events;
-using WPF.Patterns.Commands;
+using Microsoft.Practices.Composite.Presentation.Commands;
 
 namespace CommonObjects
 {
@@ -40,7 +40,7 @@ namespace CommonObjects
 		{
 			_eventAggregator = eventAggregator;
 			_eventAggregator.GetEvent<LangChangedEvent>().Subscribe(obj => OnPropertyChanged("Name"));
-			RemoveCommand = new DelegateCommand(() => IsActive = false);
+			RemoveCommand = new DelegateCommand<object>((o) => IsActive = false);
 		}
 
 		#region INotifyPropertyChanged
