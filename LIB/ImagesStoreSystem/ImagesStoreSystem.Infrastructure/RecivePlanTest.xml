@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Мусор>
+<ReceivePlan Мусор="Мусор" ID="0002001" ЕщёМусор="Мусор">
+<CreateTime>2007-12-01T13:45:13.567Z</CreateTime>
+ 
+<Session ID="100">
+  <Satellite ID="12">Word Wide</Satellite>
+  <Trajectory UID=""/>
+  <Station ID="10">Tver</Station>
+  <TrackingTime start="2008-12-01T13:45:13.567Z" end="2008-12-01T13:55:10.678Z" />
+  <ReceiveTime start="2008-12-01T13:45:13.567Z" end="2008-12-01T13:55:10.678Z" />
+</Session>
+  
+<Мусорок>
+<Session ID="200">
+  <Satellite ID="11">E-Star</Satellite>
+  <Trajectory UID="7878787"/>
+  <Station ID="20">Moscow</Station>
+  <TrackingTime start="2009-12-01T13:45:13.567Z" end="2009-12-01T13:55:10.678Z" />
+  <ReceiveTime start="2009-12-01T13:45:13.567Z" end="2009-12-01T13:55:10.678Z" />
+</Session>
+</Мусорок>
+
+</ReceivePlan>
+
+  <ИТутаМусор>
+
+  <ReceivePlan j="jj" ID="0002002" UID="jjj">
+    <CreateTime>2007-12-01T13:45:13.567Z</CreateTime>
+
+    <Session ID="101">
+      <Satellite ID="12">Word Wide</Satellite>
+      <Trajectory UID=""/>
+      <Station ID="10">Tver</Station>
+      <TrackingTime start="2008-12-02T13:45:13.567Z" end="2008-12-02T13:55:10.678Z" />
+      <ReceiveTime start="2008-12-02T13:45:13.567Z" end="2008-12-02T13:55:10.678Z" />
+    </Session>
+
+
+    <Session ID="202">
+      <Satellite ID="11">E-Star</Satellite>
+      <Trajectory UID="7878787"/>
+      <Station ID="20">Moscow</Station>
+      <TrackingTime start="2009-12-02T13:45:13.567Z" end="2009-12-02T13:55:10.678Z" />
+      <ReceiveTime start="2009-12-02T13:45:13.567Z" end="2009-12-02T13:55:10.678Z" />
+    </Session>
+
+
+  </ReceivePlan>
+  </ИТутаМусор>
+</Мусор>

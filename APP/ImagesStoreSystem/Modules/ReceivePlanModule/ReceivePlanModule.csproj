@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{767ED1B4-57F0-42AF-B3B7-59E44532ECA5}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ReceivePlanModule</RootNamespace>
+    <AssemblyName>ReceivePlanModule</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.Composite">
+      <HintPath>..\..\..\..\RELEASE\Lib\Prism\Desktop\Microsoft.Practices.Composite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Composite.Presentation">
+      <HintPath>..\..\..\..\RELEASE\Lib\Prism\Desktop\Microsoft.Practices.Composite.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Composite.UnityExtensions">
+      <HintPath>..\..\..\..\RELEASE\Lib\Prism\Desktop\Microsoft.Practices.Composite.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\..\..\RELEASE\Lib\Prism\Desktop\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\..\..\RELEASE\Lib\Prism\Desktop\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Converters\WarningToStringConverter.cs" />
+    <Compile Include="Presenters\Filters\NonExecutedFilterPresenter.cs" />
+    <Compile Include="Presenters\Filters\PackIdentityFilterPresenter.cs" />
+    <Compile Include="Presenters\Filters\PlanTimeFilter.cs" />
+    <Compile Include="Presenters\Filters\ReceivePlanFilterManager.cs" />
+    <Compile Include="Presenters\Filters\SatelliteFilterPresenter.cs" />
+    <Compile Include="Presenters\Filters\StationFilterPresenter.cs" />
+    <Compile Include="Presenters\ReceivePlanPagePresenter.cs" />
+    <Compile Include="ReceivePlanConstants.cs" />
+    <Compile Include="ReceivePlanModuleMain.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Repositories.cs" />
+    <Compile Include="View\ReceivePlanMenuItem.xaml.cs">
+      <DependentUpon>ReceivePlanMenuItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReceivePlanPageView.xaml.cs">
+      <DependentUpon>ReceivePlanPageView.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\LIB\ImagesStoreSystem\ImagesStoreSystem.DBProvider\ImagesStoreSystem.DBProvider.csproj">
+      <Project>{7FA8BE19-34C6-49B3-8C04-6E7F70736995}</Project>
+      <Name>ImagesStoreSystem.DBProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\LIB\WPF\LacalizationLibrary\LocalizationLibrary.csproj">
+      <Project>{BA260E07-3E04-4EE2-8E62-A0B66480DCD6}</Project>
+      <Name>LocalizationLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\LIB\WPF\PatternLibrary\PatternLibrary.csproj">
+      <Project>{1A2FED2B-106B-4951-B8C6-B00AFEE7B3D4}</Project>
+      <Name>PatternLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\ImageStoreSystem.Infrastructure\ImageStoreSystem.Infrastructure.csproj">
+      <Project>{A47D498D-E125-45FD-9603-4DC08ED492B9}</Project>
+      <Name>ImageStoreSystem.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonObjects\CommonObjects.csproj">
+      <Project>{CDA41BA8-5689-4DFC-9DB3-0556CBCC9346}</Project>
+      <Name>CommonObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DictionaryModule\DictionaryModule.csproj">
+      <Project>{4D8BBEEF-42D9-45FA-97A3-A4F62D0A3F0E}</Project>
+      <Name>DictionaryModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StorageModule\StorageModule.csproj">
+      <Project>{5DBDA689-2BD2-422E-B130-B05D5A2E56DF}</Project>
+      <Name>StorageModule</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Page Include="View\DatePickerWithoutText.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Filters\FilterManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Filters\NonExecuteFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Filters\PackIdentifyFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Filters\PlanTimeFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Filters\SatelliteFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Filters\StationFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PlanTaskStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ReceivePlanMenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ReceivePlanPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(SolutionDir)bin\$(ConfigurationName)\Modules\" /y /i /d /c</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

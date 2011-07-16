@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:storage="clr-namespace:StorageModule.Model;assembly=StorageModule"
+                    xmlns:lang="clr-namespace:LocalizationLibrary;assembly=LocalizationLibrary"
+					>
+	<DataTemplate DataType="{x:Type storage:DictionaryType}">
+		<TextBlock x:Name="MainTitle" FontSize="15" Foreground="White" />
+		<DataTemplate.Triggers>
+			<DataTrigger Binding="{Binding}" Value="Station">
+                <Setter TargetName="MainTitle" Property="Text" Value="{lang:Title XPath=Modules/Dictionary/CreateItemTitles/Station}"/>
+			</DataTrigger>
+			<DataTrigger Binding="{Binding}" Value="Satellite">
+                <Setter TargetName="MainTitle" Property="Text" Value="{lang:Title XPath=Modules/Dictionary/CreateItemTitles/Satellite}"/>
+			</DataTrigger>
+			<DataTrigger Binding="{Binding}" Value="ImageLevel">
+                <Setter TargetName="MainTitle" Property="Text" Value="{lang:Title XPath=Modules/Dictionary/CreateItemTitles/Level}"/>
+			</DataTrigger>
+			<DataTrigger Binding="{Binding}" Value="Sensor">
+                <Setter TargetName="MainTitle" Property="Text" Value="{lang:Title XPath=Modules/Dictionary/CreateItemTitles/SensorType}"/>
+			</DataTrigger>
+			<DataTrigger Binding="{Binding}" Value="BackupStorage">
+                <Setter TargetName="MainTitle" Property="Text" Value="{lang:Title XPath=Modules/Dictionary/CreateItemTitles/Storage}"/>
+			</DataTrigger>
+			<DataTrigger Binding="{Binding}" Value="AdditionalField">
+                <Setter TargetName="MainTitle" Property="Text" Value="{lang:Title XPath=Modules/Dictionary/CreateItemTitles/AttributeType}"/>
+			</DataTrigger>
+		</DataTemplate.Triggers>
+	</DataTemplate>
+</ResourceDictionary>

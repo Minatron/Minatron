@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguagesResource culture="en-GB">
+  <TimeSpan>
+    <Days>days</Days>
+    <Day>day</Day>
+    <Template>d -h -min -s</Template>
+  </TimeSpan>
+  <FileSizes>
+    <b>B</b>
+    <Kb>kB</Kb>
+    <Mb>MB</Mb>
+  </FileSizes>
+
+  <Speeds>
+    <bs>B/s</bs>
+    <Kbs>kB/s</Kbs>
+    <Mbs>MB/s</Mbs>
+  </Speeds>
+  
+  <ApplicationTitle>Images Store System</ApplicationTitle>
+  <StorageGroupBoxName>STORAGE</StorageGroupBoxName>
+  <DictionariesGroupBoxName>DICTIONARIES</DictionariesGroupBoxName>
+  <ToolsGroupBoxName>TOOLS</ToolsGroupBoxName>
+  <BackButton>Back</BackButton>
+
+  <CommonWords>
+    <Station>Station</Station>
+    <Satellite>Satellite</Satellite>
+    <Sensor>Sensor</Sensor>
+    <Map>Map</Map>
+    <Save>Save</Save>
+    <Cancel>Cancel</Cancel>
+    <Edit>Edit</Edit>
+    <Remove>Remove</Remove>
+    <Refresh>Refresh</Refresh>
+    <Apply>Apply</Apply>
+    <Cloudiness>Cloudiness</Cloudiness>
+    <Level>Image level</Level>
+    <Storage>Backup storage</Storage>
+    <Attribute>Additional field</Attribute>
+    <SurveyTime>Survey time</SurveyTime>
+    <PageScolling>
+      <PrevPageButtonTooltip>Previous page</PrevPageButtonTooltip>
+      <NextPageButtonTooltip>Next page</NextPageButtonTooltip>
+    </PageScolling>
+    <FilesList>
+      <FileName>File name</FileName>
+      <Type>Type</Type>
+      <Size>Size</Size>
+      <CreateTime>Addition time</CreateTime>
+      <Description>Description</Description>
+      <Download>Export selection</Download>
+      <DownloadAll>Export all</DownloadAll>
+    </FilesList>
+  </CommonWords>
+
+  <Shell>
+    <AddMenuItem>Add</AddMenuItem>
+  </Shell>
+  
+  <Modules>
+    <Dictionary>
+      <GroupBoxHeader>Dictionaries</GroupBoxHeader>
+      <StationsTabItem>Stations</StationsTabItem>
+      <SensorsTabItem>Sensor types</SensorsTabItem>
+      <ImageLevelsTabItem>Image levels</ImageLevelsTabItem>
+      <AttributeTypesTabItem>Image additional fields</AttributeTypesTabItem>
+      <SatellitesTabItem>Satellites</SatellitesTabItem>
+      <StoragesTabItem>Storages</StoragesTabItem>
+      <CreateMenuHeaders>
+        <Session>New receive session</Session>
+        <Image>New image</Image>
+        <Satellite>New satellite</Satellite>
+        <SensorType>New sensor type</SensorType>
+        <AttributeType>New image additional field type</AttributeType>
+        <Level>New image level</Level>
+        <Station>New station</Station>
+        <Storage>New backup storage</Storage>
+      </CreateMenuHeaders>
+      <CreateItemTitles>
+        <Station>Add new station</Station>
+        <Satellite>Add new satellite</Satellite>
+        <Level>Add new image level</Level>
+        <SensorType>Add new sensor type</SensorType>
+        <Storage>Add new backup storage</Storage>
+        <AttributeType>Add new image additional field type</AttributeType>
+      </CreateItemTitles>
+      <EditItemTitles>
+        <Station>Edit stations</Station>
+        <Satellite>Edit satellites</Satellite>
+        <Level>Edit image levels</Level>
+        <Sensor>Edit sensor types</Sensor>
+        <Storage>Edit backup storages</Storage>
+        <Attribute>Edit additional field types</Attribute>
+      </EditItemTitles>
+      <EditionMenuHeaders>
+        <AttributeType>Image additional field types list</AttributeType>
+        <Level>Image levels list</Level>
+        <Satellite>Satellites list</Satellite>
+        <SensorType>Sensor types list</SensorType>
+        <Station>Stations list</Station>
+        <Storage>Storages list</Storage>
+      </EditionMenuHeaders>
+      <DictionaryProxyView>
+        <NoObjectsInDb>There are no objects in database</NoObjectsInDb>
+      </DictionaryProxyView>
+      <EditObjectView>
+        <AlreadyExist>Such object already exists in database</AlreadyExist>
+        <CannotRemove>Cannot remove object. Please refresh dictionary</CannotRemove>
+        <Title>Title</Title>
+        <CatalogNumber>№</CatalogNumber>
+        <EditStationGroupBox>Create station</EditStationGroupBox>
+        <EditImageLevelGroupBox>Create image level</EditImageLevelGroupBox>
+        <EditSensorGroupBox>Create sensor type</EditSensorGroupBox>
+        <EditAttributeTypeGroupBox>Create additional field type</EditAttributeTypeGroupBox>
+        <EditStorageGroupBox>Create storage</EditStorageGroupBox>
+        <SatelliteEditGroupBox>
+          <Header>Create satellite</Header>
+          <Number>№</Number>
+        </SatelliteEditGroupBox>
+        <SelectRequestMessages>
+          <Station>Select station please</Station>
+          <Level>Select level please</Level>
+          <Sensor>Select sensor type please</Sensor>
+          <AttributeType>Select additional field type please</AttributeType>
+          <Storage>Select storage please</Storage>
+          <Satellite>Select satellite please</Satellite>
+        </SelectRequestMessages>
+        <SelectedObjectsMessages>
+          <Station>Selected station</Station>
+          <Level>Selected level</Level>
+          <Sensor>Selected sensor type</Sensor>
+          <AttributeType>Selected additional field type</AttributeType>
+          <Storage>Selected storage</Storage>
+          <Satellite>Selected satellite</Satellite>          
+        </SelectedObjectsMessages>
+        <EditionHeaders>
+          <Station>Station edition</Station>
+          <Level>Level edition</Level>
+          <SensorType>Sensor type edition</SensorType>
+          <AttributeType>Additional field type edition</AttributeType>
+          <Storage>Storage edition</Storage>
+          <Satellite>Satellite edition</Satellite>
+        </EditionHeaders>
+      </EditObjectView>
+      <ObjectsListView>
+        <NoStationsInDb>There are no stations</NoStationsInDb>
+        <NoSensorsInDb>There are no sensor types</NoSensorsInDb>
+        <NoImageLevelsInDb>There are no image levels</NoImageLevelsInDb>
+        <NoAttributesInDb>There are no additional field types</NoAttributesInDb>
+        <NoSatellitesInDb>There are no satellites</NoSatellitesInDb>
+        <NoStoragesInDb>There are no storages</NoStoragesInDb>
+        <ObjectsListGroupBoxes>
+          <Stations>Stations list</Stations>
+          <Satellites>Satellites list</Satellites>
+          <SensorTypes>Sensor types list</SensorTypes>
+          <ImageLevels>Image levels list</ImageLevels>
+          <Attributes>Additional field types list</Attributes>
+          <Storages>Storages list</Storages>
+        </ObjectsListGroupBoxes>
+        <New>New</New>
+      </ObjectsListView>
+  </Dictionary>
+    <FileOperations>
+      <CreateBackupsView>
+        <New>New backup</New>
+      </CreateBackupsView>
+      <DataFileDetailsView>
+        <BackupsGroupBox>Backups</BackupsGroupBox>
+        <DetailsGroupBox>Details</DetailsGroupBox>
+      </DataFileDetailsView>
+      <DownloadContentView>
+        <DownloadGroupBox>
+          <Header>Content exporting</Header>
+          <Complete>Export complete</Complete>
+          <Speed>speed</Speed>
+          <Ok>Ok</Ok>
+        </DownloadGroupBox>
+      </DownloadContentView>
+      <EditFilesView>
+        <NoFiles>There are no files for this object in DB</NoFiles>
+        <GroupBoxHeader>Edit files</GroupBoxHeader>
+        <NewFiles>New files</NewFiles>
+        <AddFilesButton>Add files</AddFilesButton>
+      </EditFilesView>
+      <EditSingleFileView>
+        <NameInDB>Name in database</NameInDB>
+        <Description>Description</Description>
+        <FileType>File type</FileType>
+        <Default>Default</Default>
+        <QuickLook>Quick look</QuickLook>
+        <Size>Size</Size>
+      </EditSingleFileView>
+      <UploadContentView>
+        <UploadGroupBox>
+          <Header>Content uploading</Header>
+          <ErrorUploading>Error uploading files to database!</ErrorUploading>
+          <Complete>Operation complete</Complete>
+          <Speed>speed</Speed>
+          <NoSpeedInfo>no speed info</NoSpeedInfo>
+          <Ok>Ok</Ok>
+        </UploadGroupBox>
+      </UploadContentView>
+      <SelectionFilesView>
+        <GroupBoxHeader>Select files</GroupBoxHeader>
+        <Name>Name</Name>
+        <CreationTime>Creation time</CreationTime>
+        <Size>Size</Size>
+        <DownloadButton>Export</DownloadButton>
+      </SelectionFilesView>
+    </FileOperations>
+    <Images>
+      <FiltersDescription>
+        <MaxCloudiness>filter by cloudiness</MaxCloudiness>
+        <Level>filter by level</Level>
+        <Polygon>filter by coordinates</Polygon>
+        <ReceiveTime>filter by survey time</ReceiveTime>
+        <Satellite>filter by satellite</Satellite>
+        <Sensor>filter by sensor type</Sensor>
+      </FiltersDescription>
+      <Filters>
+        <DateTime>
+          <From>from</From>
+          <To>to</To>
+        </DateTime>
+        <MaxCloudiness>
+          <LessThan>Less than</LessThan>
+        </MaxCloudiness>
+        <Polygon>
+          <ExpandButton>Expand</ExpandButton>
+          <ShrinkButton>Collapse</ShrinkButton>
+          <HideMapButton>Hide map</HideMapButton>
+          <ShowMapButton>Mark on map</ShowMapButton>
+          <ManualSetButton>Manual set</ManualSetButton>
+          <HideManualSetButton>Hide manual entering</HideManualSetButton>
+          <Ok>Ok</Ok>
+        </Polygon>
+      </Filters>
+      <Level>Image level</Level>
+      <PolygonCoords>
+        <TopLat>Top latitude</TopLat>
+        <BottomLat>Bottom latitude</BottomLat>
+        <LeftLong>Left longitude</LeftLong>
+        <RightLong>Right longitude</RightLong>
+      </PolygonCoords>
+      <PolygonFieldView>
+        <Polygon>Image coordinates</Polygon>
+      </PolygonFieldView>
+      <EditImageView>
+        <DetailsGroupBox>
+          <Header>Edit image</Header>
+          <FilesSize>Files size</FilesSize>
+          <EditFilesButton>Edit files</EditFilesButton>
+          <TryCreatePolygonButton>Try to create image coordinates</TryCreatePolygonButton>
+        </DetailsGroupBox>
+        <ReceiveSession>Receive session</ReceiveSession>
+        <AddField>Add field</AddField>
+        <Attributes>Additional fields</Attributes>
+      </EditImageView>
+      <ImageAttributeManagerView>
+        <NoAttributes>No additional fields</NoAttributes>
+      </ImageAttributeManagerView>
+      <ImageDetailsView>
+        <To>To</To>
+        <FilesTabItem>
+          <Header>Files</Header>
+          <NoFiles>There are no files attached to this image</NoFiles>
+        </FilesTabItem>
+        <PreviewsTabItem>Previews</PreviewsTabItem>
+        <MapTabItem>
+          <NoCoorBinding>This image has no coordinate binding</NoCoorBinding>
+        </MapTabItem>
+        <Polygon>Image coordinates</Polygon>
+        <DetailsGroupBox>
+          <Header>Image</Header>
+          <FilesSize>Files size</FilesSize>
+          <DownloadButton>View files</DownloadButton>
+        </DetailsGroupBox>
+        <ReceiveSession>Receive session</ReceiveSession>
+        <AttributesGroupBox>Additional fields</AttributesGroupBox>
+      </ImageDetailsView>
+      <PolygonSelectorView>
+        <IncorrectCoords>Incorrect coordinates</IncorrectCoords>
+        <RecreatePolygonButton>Recreate image coordinates</RecreatePolygonButton>
+      </PolygonSelectorView>
+      <PolygonView>
+        <PolygonNotSet>Image coordinates are not set</PolygonNotSet>
+      </PolygonView>
+      <QuickLooksCollectionView>
+        <NoPreviews>No Previews</NoPreviews>
+        <PrevQuicklookButtonTooltip>Previous preview</PrevQuicklookButtonTooltip>
+        <NextQuicklookButtonTooltip>Next preview</NextQuicklookButtonTooltip>
+      </QuickLooksCollectionView>
+      <ContentView>
+        <HeaderName>Images list</HeaderName>
+      </ContentView>
+      <PageView>
+        <ConnectionProblem>Connection problem. Cannot take images from DB</ConnectionProblem>
+        <New>New image</New>
+        <UpdateRequired>Press refresh after changing filters</UpdateRequired>
+        <AddFilterMenuItem>Add filter</AddFilterMenuItem>
+        <NoImagesInDb>There are no registered images in database</NoImagesInDb>
+        <SearchNoResults>Search return no results</SearchNoResults>
+      </PageView>
+      <SatelliteSelector>
+        <Number>№</Number>
+      </SatelliteSelector>
+      <ViewNames>
+        <EditView>Image edition</EditView>
+        <DetailsView>Image info</DetailsView>
+        <ContentView>Image list</ContentView>
+      </ViewNames>
+      <MenuItemText>Images</MenuItemText>
+    </Images>
+    <Lang>
+      <Lang>Language of user interface</Lang>
+    </Lang>
+    <Map>
+      <MapSettingsView>
+        <UseMaps>Use maps</UseMaps>
+        <MapFolder>Map folder</MapFolder>
+        <BrowseButtonTooltip>Browse folders</BrowseButtonTooltip>
+        <RestartNeeded>Restart application to apply new maps settings</RestartNeeded>
+        <MinMapSize>Collapsed map size</MinMapSize>
+        <MaxMapSize>Expanded map size</MaxMapSize>
+        <Width>Width</Width>
+        <Height>Height</Height>
+      </MapSettingsView>
+    </Map>
+    <ReceivePlan>
+      <FiltersDescription>
+        <Station>filter by station</Station>
+        <Satellite>filter by satellite</Satellite>
+        <ReceiveTime>filter by receive time</ReceiveTime>
+        <PacketId>filter by packet ID</PacketId>
+        <OnlyPlanned>only planned sessions</OnlyPlanned>
+      </FiltersDescription>
+      <MenuItem>Receive session tasks</MenuItem>
+      <PageView>
+        <ImportMenuItem>Import</ImportMenuItem>
+        <ExportMenuItem>Export</ExportMenuItem>
+        <ReceiveTime>Receive time</ReceiveTime>
+        <PlanId>Plan ID</PlanId>
+        <Session>Receive session</Session>
+        <ReceivePlans>Receive plans</ReceivePlans>
+        <ViewCompletedSessionTooltip>View completed receive session</ViewCompletedSessionTooltip>
+        <View>View</View>
+        <CreateCompletedSessionTooltip>Create completed receive session</CreateCompletedSessionTooltip>
+        <Add>Add</Add>
+        <NoPlansInDb>There are no registered receive plans in database</NoPlansInDb>
+        <SearchNoResults>Search return no results</SearchNoResults>
+      </PageView>
+    </ReceivePlan>
+    <Satellite>
+      <ContentView>
+        <HeaderName>Satellites</HeaderName>
+        <AddNewSat>Add new satellite</AddNewSat>
+        <Refresh>Refresh</Refresh>
+        <SatellitesListBox>
+          <Edit>Edit</Edit>
+        </SatellitesListBox>
+      </ContentView>
+      <MenuItemText>Satellites</MenuItemText>
+    </Satellite>
+    <Sessions>
+      <FiltersDescription>
+        <ReceiveTime>filter by receive time</ReceiveTime>
+        <Satellite>filter by satellite</Satellite>
+        <Station>filter by station</Station>
+      </FiltersDescription>
+      <Filters>
+        <DateTime>
+          <From>from</From>
+          <To>to</To>
+        </DateTime>
+      </Filters>
+      <Coords>
+        <Latitude>Latitude</Latitude>
+        <Longitude>Longitude</Longitude>
+      </Coords>
+      <RawDataView>
+        <NameInDB>Name in database</NameInDB>
+        <File>File</File>
+        <Description>Decription</Description>
+        <NoFiles>No files selected</NoFiles>
+        <AddFile>Add file</AddFile>
+      </RawDataView>
+      <RSImagesPageView>
+        <ConnectionProblem>Connection problem. Cannot take images from DB</ConnectionProblem>
+        <NoImages>There are no images in DB for this receive session</NoImages>
+        <AddImageButton>Add image</AddImageButton>
+      </RSImagesPageView>
+      <SessionsContentView>
+        <GroupBoxHeaderName>Receive sessions</GroupBoxHeaderName>
+      </SessionsContentView>
+      <ReceiveSessionEditView>
+        <BadPointFormat>Incorrect sql point format</BadPointFormat>
+        <DetailsGroupBox>
+          <HeaderName>Edit receive session</HeaderName>
+          <StartTimeLabel>Receive start</StartTimeLabel>
+          <EndTimeLabel>Receive end</EndTimeLabel>
+          <LocationLabel>Antenna coordinates</LocationLabel>
+          <RawSizeLabel>Raw size</RawSizeLabel>
+          <SetRawDataButton>Edit file list</SetRawDataButton>
+        </DetailsGroupBox>
+        <RemoveFieldTooltip>Remove field</RemoveFieldTooltip>
+        <AddFieldMenuItem>Add field</AddFieldMenuItem>
+      </ReceiveSessionEditView>
+      <RSDetailsView>
+        <To>To</To>
+        <ReceiveLocationGroupBox>Antenna coordinates</ReceiveLocationGroupBox>
+        <ReceivePositionNotSet>Antenna coordinates are not set</ReceivePositionNotSet>
+        <DetailsGroupBox>
+          <HeaderName>Receive session</HeaderName>
+        </DetailsGroupBox>
+        <DownloadRawDataButton>View files</DownloadRawDataButton>
+        <ShowOnMapButton>Show on map</ShowOnMapButton>
+        <ImagesGroupBox>Images</ImagesGroupBox>
+        <FilesTabItem>
+          <Header>Files</Header>
+          <NoFiles>There are no attached files</NoFiles>
+        </FilesTabItem>
+        <Duration>Session duration</Duration>
+        <Latitude>latitude</Latitude>
+        <Longitude>longitude</Longitude>
+      </RSDetailsView>
+      <RawDataImportView>
+        <HeaderName>File list</HeaderName>
+        <ImportButton>Upload</ImportButton>
+      </RawDataImportView>
+      <SatelliteSelectorView>
+        <Number>№</Number>
+      </SatelliteSelectorView>
+      <SessionsPageView>
+        <CannotTakeObjects>Cannot take objects from database</CannotTakeObjects>
+        <New>New receive session</New>
+        <UpdateRequired>Press refresh after changing filters</UpdateRequired>
+        <AddFilterTooltip>Add filter</AddFilterTooltip>
+        <NoSessionsInDb>There are no registered receive sessions in database</NoSessionsInDb>
+        <SearchNoResults>Search return no results</SearchNoResults>
+        <ReceiveTime>Receive time</ReceiveTime>
+        <StartTime>Start time</StartTime>
+        <EndTime>End time</EndTime>
+        <Page>page</Page>
+      </SessionsPageView>
+      <ViewNames>
+        <EditView>Receive session edition</EditView>
+        <DetailsView>Receive session info</DetailsView>
+        <ContentView>Receive session list</ContentView>
+      </ViewNames>
+      <MenuItemText>Receive sessions</MenuItemText>
+    </Sessions>
+    <Settings>
+      <GroupBoxHeader>Settings</GroupBoxHeader>
+      <Ok>Ok</Ok>
+      <MenuItemText>Settings</MenuItemText>
+    </Settings>
+    <Storage>
+      <LostConnectView>
+        <NoConnection>No connection to database</NoConnection>
+        <ReconnectButton>Reconnect</ReconnectButton>
+      </LostConnectView>
+      <SettingsView>
+        <GroupBoxHeader>Connect to server</GroupBoxHeader>
+        <CannotConnect>Cannot connect to database</CannotConnect>
+        <ConnectionStateTextBlock>Connection state</ConnectionStateTextBlock>
+        <ConnectionStates>
+          <NoConnection>no connection</NoConnection>
+          <Access>access</Access>
+        </ConnectionStates>
+        <ServerName>Server Name</ServerName>
+        <DBName>Database Name</DBName>
+        <ConnectButton>Connect</ConnectButton>
+      </SettingsView>
+    </Storage>
+  </Modules>
+</LanguagesResource>

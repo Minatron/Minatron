@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="DictionaryModule.Views.CreateDictionaryItemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:model="clr-namespace:StorageModule.Model;assembly=StorageModule"
+			 xmlns:lang="clr-namespace:LocalizationLibrary;assembly=LocalizationLibrary"
+			 xmlns:conv="clr-namespace:WPF.Patterns.Convertors;assembly=PatternLibrary"
+			 >
+	<UserControl.Resources>
+		<DataTemplate DataType="{x:Type model:NumberedDictionaryItemProxy}">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="TitleColumn"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Foreground="Black" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{lang:Title XPath=Modules/Dictionary/EditObjectView/SatelliteEditGroupBox/Number, StringFormat='\{0\}:'}"/>
+				<TextBox Grid.Column="1"  MinWidth="100" Margin="3,3,0,0" HorizontalAlignment="Stretch" Text="{Binding CatalogNumber, UpdateSourceTrigger=PropertyChanged}"/>
+			</Grid>
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type model:DictionaryItemProxy}"/>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="2*"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Column="1" Grid.Row="1" MinWidth="300" >
+			<GroupBox Header=" " Grid.IsSharedSizeScope="True">
+				<StackPanel>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" SharedSizeGroup="TitleColumn"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="10"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+
+						<TextBlock Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Text="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Center"
+					   Visibility="{Binding ErrorMessage, Converter={x:Static conv:Null.ToCollapsed}}"/>
+
+						<TextBlock Foreground="Black" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{lang:Title XPath=Modules/Dictionary/EditObjectView/Title, StringFormat='\{0\}:'}"/>
+						<TextBox Grid.Column="1" MaxLength="25" Grid.Row="2" MinWidth="100" Margin="3,0,0,0" HorizontalAlignment="Stretch" Text="{Binding Proxy.Title, UpdateSourceTrigger=PropertyChanged}"/>
+					</Grid>
+					<ContentControl Content="{Binding Proxy}"/>
+					<Grid Margin="0,5,0,0" HorizontalAlignment="Right">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Button MinWidth="50" Margin="5" Padding="5,2,5,2" Content="{lang:Title XPath=CommonWords/Save}" Command="{Binding ApplyCommand}"/>
+						<Button MinWidth="50" Grid.Column="1" Margin="5" Padding="5,2,5,2" Content="{lang:Title XPath=CommonWords/Cancel}" Command="{Binding CancelCommand}"/>
+					</Grid>
+				</StackPanel>
+			</GroupBox>
+			<ContentControl Content="{Binding InfoType}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="2,1,2,2">
+				<ContentControl.Resources>
+					<ResourceDictionary Source="CreateDictionaryItemTitles.xaml"/>
+				</ContentControl.Resources>
+			</ContentControl>
+		</Grid>
+	</Grid>
+</UserControl>

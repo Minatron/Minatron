@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7FA8BE19-34C6-49B3-8C04-6E7F70736995}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ImagesStoreSystem.DBProvider</RootNamespace>
+    <AssemblyName>ImagesStoreSystem.DBProvider</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\RELEASE\ImagesStoreSystem\LIB\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\..\RELEASE\ImagesStoreSystem\LIB\ImagesStoreSystem.DBProvider.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=1.0.0.593, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\RELEASE\Lib\NHibernate\Required_Bins\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\RELEASE\Lib\NHibernate\Required_Bins\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\RELEASE\Lib\NHibernate\Required_For_LazyLoading\LinFu\LinFu.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\RELEASE\Lib\SqlGeography\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\RELEASE\Lib\NHibernate\Required_Bins\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.LinFu">
+      <HintPath>..\..\..\RELEASE\Lib\NHibernate\Required_For_LazyLoading\LinFu\NHibernate.ByteCode.LinFu.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.Prevalence">
+      <HintPath>..\..\..\RELEASE\Lib\NHibernate\Caches\NHibernate.Caches.Prevalence\NHibernate.Caches.Prevalence.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\DataBaseProvider.cs" />
+    <Compile Include="Core\Exceptions\ConnectException.cs" />
+    <Compile Include="Core\Exceptions\OperationException.cs" />
+    <Compile Include="Core\Extension\DataFileExtension.cs" />
+    <Compile Include="Core\Extension\GetAll.cs" />
+    <Compile Include="Core\Extension\GetOne.cs" />
+    <Compile Include="Core\Extension\RemoveExtension.cs" />
+    <Compile Include="Core\Extension\SaveExtension.cs" />
+    <Compile Include="Core\Extension\SetupPacketExtension.cs" />
+    <Compile Include="Core\Files\RecivePlanFile.cs" />
+    <Compile Include="Core\Filters\DictionaryItemFilter.cs" />
+    <Compile Include="Core\Filters\Image Filters\ImageCloudnessFilter.cs" />
+    <Compile Include="Core\Filters\Image Filters\ImagePolygonFilter.cs" />
+    <Compile Include="Core\Filters\Image Filters\ImageTimeFilter.cs" />
+    <Compile Include="Core\Filters\Image Filters\ImageSurveyTimeFilter.cs" />
+    <Compile Include="Core\Filters\IStorageFilter.cs" />
+    <Compile Include="Core\Filters\PagingFilter.cs" />
+    <Compile Include="Core\Filters\PeriodFilter.cs" />
+    <Compile Include="Core\Filters\ReceivePlanTask Filters\IReceivePlanTaskFilter.cs" />
+    <Compile Include="Core\Filters\ReceivePlanTask Filters\ReceivePlanNotExecutedFilter.cs" />
+    <Compile Include="Core\Filters\ReceivePlanTask Filters\ReceivePlanPackIdentityFilter.cs" />
+    <Compile Include="Core\Filters\ReceivePlanTask Filters\ReceivePlanTimeFilter.cs" />
+    <Compile Include="Core\Filters\ReceiveSession Filters\SessionTimeFilter.cs" />
+    <Compile Include="Core\Filters\SearchFilterByIdentifyObject.cs" />
+    <Compile Include="Core\Filters\SortFilter.cs" />
+    <Compile Include="Core\Filters\Image Filters\IImageFilter.cs" />
+    <Compile Include="Core\Filters\ReceiveSession Filters\IReceiveSessionFilter.cs" />
+    <Compile Include="Core\IFileInfo.cs" />
+    <Compile Include="Core\Objects\IDatable.cs" />
+    <Compile Include="Core\Objects\ReceivePlanTask.cs" />
+    <Compile Include="Core\Objects\RemovableObject.cs" />
+    <Compile Include="Core\Objects\UpdatableObject.cs" />
+    <Compile Include="Core\Repository\ISessionCreatorExtension.cs" />
+    <Compile Include="Core\Repository\DataFileRepository.cs" />
+    <Compile Include="Core\Repository\DictionaryRepository.cs" />
+    <Compile Include="Core\Repository\ImageRepository.cs" />
+    <Compile Include="Core\ISessionCreator.cs" />
+    <Compile Include="Core\Repository\NumberedDictionaryRepository.cs" />
+    <Compile Include="Core\Repository\ReceivePlanTaskRepository.cs" />
+    <Compile Include="Core\Repository\UpdatableRepository.cs" />
+    <Compile Include="Core\Repository\ReceiveSessionRepository.cs" />
+    <Compile Include="Core\Extension\SessionFactoryExtension.cs" />
+    <Compile Include="Core\Objects\ImageAttribute.cs" />
+    <Compile Include="Core\Objects\DictionaryBase.cs" />
+    <Compile Include="Core\Objects\DataPacket.cs" />
+    <Compile Include="Core\Objects\DataFile.cs" />
+    <Compile Include="Core\Objects\BackupFile.cs" />
+    <Compile Include="Core\Objects\BackupsStorage.cs" />
+    <Compile Include="Core\Objects\AttributeTitle.cs" />
+    <Compile Include="Core\Objects\IdentifiableObject.cs" />
+    <Compile Include="Core\Objects\Image.cs" />
+    <Compile Include="Core\Objects\ImageLevel.cs" />
+    <Compile Include="Core\Objects\Satellite.cs" />
+    <Compile Include="Core\Objects\ReceiveSession.cs" />
+    <Compile Include="Core\Objects\SatelliteSensor.cs" />
+    <Compile Include="Geography\Srids.cs" />
+    <Compile Include="Mapping\DataStore\BackupsStorageMap.cs" />
+    <Compile Include="Mapping\DataStore\DataPacketMap.cs" />
+    <Compile Include="Mapping\DataStore\DataFileMap.cs" />
+    <Compile Include="Mapping\DataStore\BackupFileMap.cs" />
+    <Compile Include="Mapping\Data\ImageAttributeMap.cs" />
+    <Compile Include="Mapping\Data\ReceivePlanTaskMap.cs" />
+    <Compile Include="Mapping\Dictionary\AttributeTitleMap.cs" />
+    <Compile Include="Mapping\Dictionary\ImageLevelMap.cs" />
+    <Compile Include="Mapping\Data\ImageMap.cs" />
+    <Compile Include="Mapping\Dictionary\SatelliteMap.cs" />
+    <Compile Include="Core\DataBase.cs" />
+    <Compile Include="Core\Objects\Station.cs" />
+    <Compile Include="Mapping\Dictionary\StationMap.cs" />
+    <Compile Include="Mapping\Data\ReciveSessionMap.cs" />
+    <Compile Include="Mapping\Dictionary\SatelliteSensorMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Geography\SqlGeographyUserType.cs" />
+    <Compile Include="Geography\GeographyConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Core\Extension\ExtensionDiagram.cd" />
+    <None Include="Core\Objects\ObjectsDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

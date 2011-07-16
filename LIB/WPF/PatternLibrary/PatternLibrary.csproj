@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1A2FED2B-106B-4951-B8C6-B00AFEE7B3D4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WPF.Patterns</RootNamespace>
+    <AssemblyName>PatternLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collections\ObservableCollectionHelper.cs" />
+    <Compile Include="Commands\BehaviorBinding.cs" />
+    <Compile Include="Commands\CommandBehavior.cs" />
+    <Compile Include="Commands\CommandBehaviorBinding.cs" />
+    <Compile Include="Commands\CommandBehaviorCollection.cs" />
+    <Compile Include="Commands\CommandReference.cs" />
+    <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Commands\ExecutionStrategy.cs" />
+    <Compile Include="Commands\RoutedEventTrigger.cs" />
+    <Compile Include="Commands\SimpleCommand.cs" />
+    <Compile Include="Controls\DateTimePicker.cs" />
+    <Compile Include="Convertors\DateTimeToStringConverter.cs" />
+    <Compile Include="Convertors\FromBoolean\FromBoolean.cs" />
+    <Compile Include="Convertors\FromBoolean\ToVisibility.cs" />
+    <Compile Include="Convertors\FromBoolean\ToWidth.cs" />
+    <Compile Include="Convertors\FromDateTime\FromDateTime.cs" />
+    <Compile Include="Convertors\FromDateTime\DateTimeCovertor.cs" />
+    <Compile Include="Convertors\FromDateTime\ToDateTime.cs" />
+    <Compile Include="Convertors\FromDateTime\ToString.cs" />
+    <Compile Include="Convertors\FromDateTime\ToString_Smart.cs" />
+    <Compile Include="Convertors\FromInt\FromInt.cs" />
+    <Compile Include="Convertors\FromInt\ToVisibility.cs" />
+    <Compile Include="Convertors\FromMath\FromMath.cs" />
+    <Compile Include="Convertors\FromMath\ToNegative.cs" />
+    <Compile Include="Convertors\FromNull\FromNull.cs" />
+    <Compile Include="Convertors\FromNull\ToVisibility.cs" />
+    <Compile Include="Convertors\FromString\FromString.cs" />
+    <Compile Include="Convertors\FromString\ToDouble.cs" />
+    <Compile Include="Convertors\FromTimeSpan\ToString.cs" />
+    <Compile Include="Convertors\FromTimeSpan\FromTimeSpan.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\AppSettings.cs" />
+    <Compile Include="Validation\DoubleRule.cs" />
+    <Compile Include="ViewModel\AutoRefresher.cs" />
+    <Compile Include="ViewModel\IUpdatebleViewModel.cs" />
+    <Compile Include="ViewModel\UpdatableViewModelBase.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LacalizationLibrary\LocalizationLibrary.csproj">
+      <Project>{BA260E07-3E04-4EE2-8E62-A0B66480DCD6}</Project>
+      <Name>LocalizationLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
