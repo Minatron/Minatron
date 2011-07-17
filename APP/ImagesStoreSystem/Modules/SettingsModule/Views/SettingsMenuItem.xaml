@@ -1,7 +1,0 @@
-﻿<UserControl x:Class="SettingsModule.Views.SettingsMenuItem"
-            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-            xmlns:lang="clr-namespace:LocalizationLibrary;assembly=LocalizationLibrary" 
-           >
-	<TextBlock Text="{lang:Title XPath=Modules/Settings/MenuItemText}" />
-</UserControl>
