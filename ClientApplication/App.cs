@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 
-namespace Band.Shell.App
+namespace Band.Client.App
 {
     public class App : Application
     {

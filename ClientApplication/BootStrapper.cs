@@ -3,7 +3,7 @@ using Microsoft.Practices.Composite.Modularity;
 using Microsoft.Practices.Composite.UnityExtensions;
 using Microsoft.Practices.Unity;
 
-namespace Band.Shell.App
+namespace Band.Client.App
 {
     class BootStrapper : UnityBootstrapper
     {
@@ -19,7 +19,7 @@ namespace Band.Shell.App
         protected override IModuleCatalog GetModuleCatalog()
         {
             return new ModuleCatalog();
-            return new DirectoryModuleCatalog { ModulePath = @".\Modules" };
+            //return new DirectoryModuleCatalog { ModulePath = @".\Modules" };
         }
     }
 }

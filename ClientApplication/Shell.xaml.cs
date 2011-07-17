@@ -1,4 +1,4 @@
-﻿namespace Band.Shell.App
+﻿namespace Band.Client.App
 {
     public partial class Shell 
     {

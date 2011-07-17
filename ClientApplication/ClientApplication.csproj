@@ -8,7 +8,7 @@
     <ProjectGuid>{517376B8-6526-42F7-9C2F-E67D277AFEF5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Band.Shell.App</RootNamespace>
+    <RootNamespace>Band.Client.App</RootNamespace>
     <AssemblyName>ClientApplication</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -101,6 +101,12 @@
     <Resource Include="..\Resources\Icons\Under-construction.ico">
       <Link>Under-construction.ico</Link>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientApplication.Infrastructure\ClientApplication.Infrastructure.csproj">
+      <Project>{A3735228-28FF-4CCA-9855-2CC64291E11D}</Project>
+      <Name>ClientApplication.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
