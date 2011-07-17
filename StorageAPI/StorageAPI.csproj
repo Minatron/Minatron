@@ -59,7 +59,7 @@
     <Compile Include="Core\DataBaseProvider.cs" />
     <Compile Include="Core\GetAll.cs" />
     <Compile Include="Data\WeighData.cs" />
-    <Compile Include="Data\Mapping\WeighDataMap.cs" />
+    <Compile Include="Data\WeighDataMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\RepositoryExtension.cs" />
     <Compile Include="Repository\WeighDataRepository.cs" />
@@ -72,6 +72,9 @@
       <Project>{07832E71-86D8-4666-BC12-970C1C8CA1E1}</Project>
       <Name>Storage.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\DB.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

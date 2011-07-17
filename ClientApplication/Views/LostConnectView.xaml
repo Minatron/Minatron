@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Band.Client.App.Views.LostConnectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:lang="clr-namespace:Band.WPF.Localization;assembly=WPF.Patterns" 
+			 xmlns:conv="clr-namespace:Band.WPF.Convertors;assembly=WPF.Patterns"
+			 >
+    <Grid >
+        <GroupBox Header=" ">
+            <Button HorizontalAlignment="Left" Margin="5" MinWidth="60" Padding="5,2,5,2" Content="{lang:Title XPath=Shell/ReconnectButton}" Command="{Binding ConnectCommand}"/>
+        </GroupBox>
+        <TextBlock Text="{lang:Title XPath=Shell/NoConnection}" FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,2,0,0"/>
+    </Grid>
+</UserControl>

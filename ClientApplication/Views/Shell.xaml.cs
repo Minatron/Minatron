@@ -2,9 +2,10 @@
 {
     public partial class Shell 
     {
-        public Shell()
+        public Shell(Presenters.ShellPresenter presenter)
         {
             InitializeComponent();
+            DataContext = presenter;
         }
     }
 }

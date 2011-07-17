@@ -5,16 +5,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApplication", "Client
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApplication.Infrastructure", "ClientApplication.Infrastructure\ClientApplication.Infrastructure.csproj", "{A3735228-28FF-4CCA-9855-2CC64291E11D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSSQL", "MSSQL", "{1C739EA6-C8FE-45B9-BEF0-BF74034F169D}"
-	ProjectSection(SolutionItems) = preProject
-		StorageAPI\MSSQL\DB.sql = StorageAPI\MSSQL\DB.sql
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageAPI", "StorageAPI\StorageAPI.csproj", "{833F8AA9-A4B4-4E6F-8FD2-9307CBA7E1C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Core", "LIB\Storage.Core\Storage.Core.csproj", "{07832E71-86D8-4666-BC12-970C1C8CA1E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Core", "Lib\Storage.Core\Storage.Core.csproj", "{07832E71-86D8-4666-BC12-970C1C8CA1E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LIB", "LIB", "{6C45D03C-5C7B-43AF-973A-F938035D7304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Patterns", "Lib\WPF.Patterns\WPF.Patterns.csproj", "{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,11 +63,22 @@ Global
 		{07832E71-86D8-4666-BC12-970C1C8CA1E1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{07832E71-86D8-4666-BC12-970C1C8CA1E1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{07832E71-86D8-4666-BC12-970C1C8CA1E1}.Release|x86.ActiveCfg = Release|Any CPU
+		{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{07832E71-86D8-4666-BC12-970C1C8CA1E1} = {6C45D03C-5C7B-43AF-973A-F938035D7304}
+		{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2} = {6C45D03C-5C7B-43AF-973A-F938035D7304}
 	EndGlobalSection
 EndGlobal

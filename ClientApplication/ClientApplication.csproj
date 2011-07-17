@@ -11,7 +11,8 @@
     <RootNamespace>Band.Client.App</RootNamespace>
     <AssemblyName>ClientApplication</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -68,19 +69,27 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="BootStrapper.cs" />
+    <Compile Include="Presenters\ConnectionPresenter.cs" />
+    <Compile Include="Presenters\ShellPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <AppDesigner Include="Properties\" />
-    <Compile Include="Shell.xaml.cs">
+    <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConnectionView.xaml.cs">
+      <DependentUpon>ConnectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LostConnectView.xaml.cs">
+      <DependentUpon>LostConnectView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Themes\texture.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Shell.xaml">
+    <Page Include="Views\Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,6 +105,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\ConnectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LostConnectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="..\Resources\Icons\Under-construction.ico">
@@ -107,6 +124,20 @@
       <Project>{A3735228-28FF-4CCA-9855-2CC64291E11D}</Project>
       <Name>ClientApplication.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Lib\Storage.Core\Storage.Core.csproj">
+      <Project>{07832E71-86D8-4666-BC12-970C1C8CA1E1}</Project>
+      <Name>Storage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\WPF.Patterns\WPF.Patterns.csproj">
+      <Project>{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}</Project>
+      <Name>WPF.Patterns</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Languages\RU.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

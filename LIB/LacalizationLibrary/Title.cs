@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Data;
 
-namespace LocalizationLibrary
+namespace Band.LocalizationLibrary
 {
 	public class Title : Binding
 	{

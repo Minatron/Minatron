@@ -3,22 +3,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BA260E07-3E04-4EE2-8E62-A0B66480DCD6}</ProjectGuid>
-    <OutputType>library</OutputType>
+    <ProjectGuid>{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Band.LocalizationLibrary</RootNamespace>
-    <AssemblyName>LocalizationLibrary</AssemblyName>
+    <RootNamespace>Band.WPF</RootNamespace>
+    <AssemblyName>WPF.Patterns</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,33 +29,40 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Core" />
     <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lang.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Title.cs" />
-    <AppDesigner Include="Properties\" />
+    <Compile Include="Convertors\DateTimeToStringConverter.cs" />
+    <Compile Include="Convertors\FromBoolean\FromBoolean.cs" />
+    <Compile Include="Convertors\FromBoolean\ToVisibility.cs" />
+    <Compile Include="Convertors\FromDateTime\DateTimeCovertor.cs" />
+    <Compile Include="Convertors\FromDateTime\FromDateTime.cs" />
+    <Compile Include="Convertors\FromDateTime\ToDateTime.cs" />
+    <Compile Include="Convertors\FromDateTime\ToString.cs" />
+    <Compile Include="Convertors\FromDateTime\ToString_Smart.cs" />
+    <Compile Include="Convertors\FromInt\FromInt.cs" />
+    <Compile Include="Convertors\FromInt\ToVisibility.cs" />
+    <Compile Include="Convertors\FromNull\FromNull.cs" />
+    <Compile Include="Convertors\FromNull\ToVisibility.cs" />
+    <Compile Include="Convertors\FromString\FromString.cs" />
+    <Compile Include="Convertors\FromString\ToDouble.cs" />
+    <Compile Include="Convertors\FromTimeSpan\FromTimeSpan.cs" />
+    <Compile Include="Convertors\FromTimeSpan\ToString.cs" />
+    <Compile Include="Localization\Lang.cs" />
+    <Compile Include="Localization\Title.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

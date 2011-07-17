@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Reflection;
 
-namespace LocalizationLibrary
+namespace Band.LocalizationLibrary
 {
 	public class Lang
 	{

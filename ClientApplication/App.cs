@@ -16,7 +16,10 @@ namespace Band.Client.App
 
         App()
         {
-            Resources = new ResourceDictionary { Source = new Uri("Pack://application:,,,/Themes/ExpressionLight.xaml", UriKind.Absolute) };			
+            var resourses = new ResourceDictionary();
+            resourses.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Pack://application:,,,/Themes/ExpressionLight.xaml", UriKind.Absolute) });
+            resourses.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Pack://application:,,,/Themes/GroupBoxStyle.xaml", UriKind.Absolute) });
+            Resources = resourses;		
         }
 		               
         protected override void OnStartup(StartupEventArgs e)

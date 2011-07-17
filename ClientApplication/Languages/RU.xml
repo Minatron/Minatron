@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguagesResource culture="ru-RU">
+  <Shell>
+    <ConnectTitle>Соединение с сервером БД</ConnectTitle>
+    <ServerName>Сервер БД</ServerName>
+    <DBName>Имя БД</DBName>
+    <Connect>Соединиться</Connect>
+    <ReconnectButton>Востановить связь</ReconnectButton>
+    <NoConnection>Нет связи с БД</NoConnection>
+  </Shell>
+</LanguagesResource>
