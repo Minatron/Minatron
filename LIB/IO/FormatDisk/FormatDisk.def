@@ -1,3 +1,0 @@
-LIBRARY	"FormatDisk"
-EXPORTS
-FormatDisk = fnFormatDisk
