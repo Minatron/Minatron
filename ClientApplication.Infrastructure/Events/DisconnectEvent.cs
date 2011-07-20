@@ -6,5 +6,4 @@ namespace Band.Client.Infrastructure.Events
     public class DisconnectEvent : CompositePresentationEvent<Action>
 	{
 	}
-
 }
