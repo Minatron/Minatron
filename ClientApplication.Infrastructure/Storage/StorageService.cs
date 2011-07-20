@@ -25,7 +25,6 @@ namespace Band.Client.Infrastructure.Storage
             _db.LoginInfo.Server = _settings.ServerName;
             _db.LoginInfo.DBName = _settings.DBName;
             _db.Connect();
-            _eventAgregator.GetEvent<Events.RefreshAllEvent>().Publish(null);
         }
 
         public bool IsConnect

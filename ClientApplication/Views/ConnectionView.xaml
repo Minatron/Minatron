@@ -22,10 +22,10 @@
 					   Text="{lang:Title XPath=Shell/NoConnection}" Visibility="{Binding HasProblems, Converter={x:Static conv:False.ToCollapsed}}"/>
 
                 <TextBlock Foreground="Black" Margin="5" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{lang:Title XPath=Shell/ServerName, StringFormat=\{0\}:}"/>
-                <TextBox Margin="5" Grid.Column="1" Grid.Row="1" MinWidth="200" VerticalAlignment="Center" Text="{Binding Settings.ServerName, UpdateSourceTrigger=PropertyChanged}"  />
+                <TextBox Margin="5" Grid.Column="1" Grid.Row="1" MinWidth="200" VerticalAlignment="Center" Text="{Binding ServerName, UpdateSourceTrigger=PropertyChanged}"  />
 
                 <TextBlock Foreground="Black" Margin="5" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{lang:Title XPath=Shell/DBName, StringFormat=\{0\}:}"/>
-                <TextBox Margin="5" Grid.Row="2" Grid.Column="1" MinWidth="200" VerticalAlignment="Center" Text="{Binding Settings.DBName, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Margin="5" Grid.Row="2" Grid.Column="1" MinWidth="200" VerticalAlignment="Center" Text="{Binding DBName, UpdateSourceTrigger=PropertyChanged}" />
 
                 <Button Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Right" Margin="5" Padding="5,2,5,2" MinWidth="60" 
 					Content="{lang:Title XPath=Shell/Connect}" Command="{Binding ConnectCommand}"/>

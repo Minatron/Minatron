@@ -73,7 +73,7 @@ namespace Band.Client.Infrastructure
             }
         }
 
-        public void Hide(Control control = null)
+        public void Hide()
         {
             if (_stack.Count > 0)
             {

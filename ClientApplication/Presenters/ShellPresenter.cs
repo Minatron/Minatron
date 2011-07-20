@@ -13,12 +13,12 @@ namespace Band.Client.App.Presenters
         {
             ModalView = modalViewManager;
 
-            modalViewManager.Show(container.Resolve<Views.ConnectionView>());
+            ModalView.Show(container.Resolve<Views.ConnectionView>());
 
             eventAggregator.GetEvent<DisconnectEvent>().Subscribe(
                 o =>
                 {
-                    eventAggregator.GetEvent<ActivateModalViewEvent>().Publish(container.Resolve<Views.LostConnectView>());
+                    ModalView.Show(container.Resolve<Views.LostConnectView>());
                 }, true);
         }
     }

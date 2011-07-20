@@ -3,6 +3,7 @@
 /RELEASE
 bin
 obj
+*.user
 *.suo
 /DLIB
 /DELETEME

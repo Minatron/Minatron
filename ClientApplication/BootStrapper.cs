@@ -1,10 +1,11 @@
 ﻿using System.Windows;
 using Band.Client.Infrastructure.Properties;
 using Band.Client.Infrastructure.Storage;
+using Band.WPF.Localization;
 using Microsoft.Practices.Composite.Modularity;
 using Microsoft.Practices.Composite.UnityExtensions;
 using Microsoft.Practices.Unity;
-using Band.WPF.Localization;
+using Band.Client.Infrastructure;
 
 namespace Band.Client.App
 {
@@ -28,6 +29,7 @@ namespace Band.Client.App
             base.ConfigureContainer();
             Container
                 .RegisterType<AppSettings>(new ContainerControlledLifetimeManager())
+                .RegisterType<ModalViewManager>(new ContainerControlledLifetimeManager())
                 .RegisterType<StorageService>(new ContainerControlledLifetimeManager());
 
 
