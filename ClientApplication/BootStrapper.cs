@@ -1,11 +1,11 @@
 ﻿using System.Windows;
+using Band.Client.Infrastructure;
 using Band.Client.Infrastructure.Properties;
 using Band.Client.Infrastructure.Storage;
 using Band.WPF.Localization;
 using Microsoft.Practices.Composite.Modularity;
 using Microsoft.Practices.Composite.UnityExtensions;
 using Microsoft.Practices.Unity;
-using Band.Client.Infrastructure;
 
 namespace Band.Client.App
 {
@@ -31,15 +31,12 @@ namespace Band.Client.App
                 .RegisterType<AppSettings>(new ContainerControlledLifetimeManager())
                 .RegisterType<ModalViewManager>(new ContainerControlledLifetimeManager())
                 .RegisterType<StorageService>(new ContainerControlledLifetimeManager());
-
-
         }
  
 
         protected override IModuleCatalog GetModuleCatalog()
         {
-            return new ModuleCatalog();
-            //return new DirectoryModuleCatalog { ModulePath = @".\Modules" };
+            return new DirectoryModuleCatalog { ModulePath = @".\" };
         }
     }
 }

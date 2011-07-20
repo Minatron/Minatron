@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
-using Band.Client.Infrastructure.Events;
+using Band.Client.Infrastructure;
 using Band.Client.Infrastructure.Properties;
 using Band.Client.Infrastructure.Storage;
-using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Presentation.Commands;
-using Band.Client.Infrastructure;
 
 namespace Band.Client.App.Presenters
 {

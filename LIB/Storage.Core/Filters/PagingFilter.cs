@@ -1,5 +1,5 @@
-﻿using NHibernate;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using NHibernate;
 
 namespace Band.Storage
 {

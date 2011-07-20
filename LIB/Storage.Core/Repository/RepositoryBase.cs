@@ -1,5 +1,5 @@
-﻿using NHibernate;
-using Band.Storage.Core;
+﻿using Band.Storage.Core;
+using NHibernate;
 
 namespace Band.Storage
 {

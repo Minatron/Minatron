@@ -15,8 +15,6 @@ namespace Band.Client.Infrastructure.Storage
             _settings = settings;
             _eventAgregator = eventAgregator;
             _db = new DataBaseProvider() { LoginInfo = new LoginInfo() };
-
-            //Connect();
         }
 
         public void Connect()

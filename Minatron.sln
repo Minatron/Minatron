@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApplication", "ClientApplication\ClientApplication.csproj", "{517376B8-6526-42F7-9C2F-E67D277AFEF5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1458AC99-D0A9-4D58-A347-64CE2457D69C} = {1458AC99-D0A9-4D58-A347-64CE2457D69C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApplication.Infrastructure", "ClientApplication.Infrastructure\ClientApplication.Infrastructure.csproj", "{A3735228-28FF-4CCA-9855-2CC64291E11D}"
 EndProject

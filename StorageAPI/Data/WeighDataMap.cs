@@ -1,5 +1,4 @@
 ﻿using FluentNHibernate.Mapping;
-using Band.Storage.Minatron;
 
 namespace Band.Storage.Minatron.Mapping
 {
