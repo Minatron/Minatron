@@ -30,12 +30,14 @@ namespace Band.Client.App
             Container
                 .RegisterType<AppSettings>(new ContainerControlledLifetimeManager())
                 .RegisterType<ModalViewManager>(new ContainerControlledLifetimeManager())
+                .RegisterType<ModulesActivator>(new ContainerControlledLifetimeManager())
                 .RegisterType<StorageService>(new ContainerControlledLifetimeManager());
         }
  
 
         protected override IModuleCatalog GetModuleCatalog()
         {
+
             return new DirectoryModuleCatalog { ModulePath = @".\" };
         }
     }
