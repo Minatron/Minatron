@@ -7,3 +7,5 @@ obj
 *.suo
 /DLIB
 /DELETEME
+/Docs
+_ReSharper*.*

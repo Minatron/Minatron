@@ -10,6 +10,7 @@ namespace Band.Client.App
         [DebuggerNonUserCodeAttribute]
         public static void Main()
         {
+            // nnn
           //  new SplashScreen("Splash.png").Show(true, true);
             new App().Run();
         }
