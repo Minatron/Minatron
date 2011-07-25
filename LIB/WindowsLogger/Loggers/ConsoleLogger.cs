@@ -1,5 +1,5 @@
 ﻿using System;
-namespace WindowsLogger
+namespace Band.WindowsLogger
 {
     /// <summary>
     /// Запись лога а консоль приложения

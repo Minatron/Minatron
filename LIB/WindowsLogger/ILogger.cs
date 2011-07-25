@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsLogger
+namespace Band.WindowsLogger
 {
     public interface ILogger
     {

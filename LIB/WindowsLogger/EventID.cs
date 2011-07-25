@@ -1,4 +1,4 @@
-﻿namespace WindowsLogger
+﻿namespace Band.WindowsLogger
 {
     public enum EventID : ushort
     {

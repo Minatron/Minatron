@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace WindowsLogger
+namespace Band.WindowsLogger
 {
     /// <summary>
     /// Запись лога в Trace .NET

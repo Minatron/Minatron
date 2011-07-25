@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WindowsLogger
+namespace Band.WindowsLogger
 {
     /// <summary>
     /// Фильтрует запись лога по типу сообщения
