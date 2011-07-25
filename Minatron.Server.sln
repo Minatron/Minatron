@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeightData.Terminal", "Weig
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsLogger", "LIB\WindowsLogger\WindowsLogger.csproj", "{72F454FE-667E-48F6-8763-6FAD3915C542}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LIB", "LIB", "{DB0EABB8-F711-4606-9D95-B9A1C48472BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,5 +40,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{72F454FE-667E-48F6-8763-6FAD3915C542} = {DB0EABB8-F711-4606-9D95-B9A1C48472BA}
 	EndGlobalSection
 EndGlobal
