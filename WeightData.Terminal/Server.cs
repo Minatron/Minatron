@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
 using Modbus.Data;
 using Modbus.Device;
@@ -23,11 +24,11 @@ namespace Band.WeightData.Terminal
 			    
                 DataStore data = DataStoreFactory.CreateDefaultDataStore();
 
-
-                //slave.DataStore = data;
                 slave.ModbusSlaveRequestReceived += (sender, arg) => 
                     {
                         IModbusMessage msg = arg.Message;
+                        string text = Encoding.ASCII.GetString(msg.ProtocolDataUnit);
+                        log.WriteMessage(Logger.EventID.ReciveData, text);
                     };
 
 			    slave.Listen();

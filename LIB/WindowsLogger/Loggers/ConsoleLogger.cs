@@ -36,7 +36,13 @@ namespace Band.WindowsLogger
         /// </summary> 
         public void WriteMessage(ushort id, object message)
         {
-            Console.WriteLine(string.Format("{0}:[{1}] {2}",DateTime.Now,(int)id,message));
+            try
+            {
+                Console.WriteLine(string.Format("{0}:[{1}] {2}", DateTime.Now, (int)id, message));
+            }
+            catch (Exception e)
+            {
+            }
         }
         public void WriteWarningMessage(ushort id, object message)
         {

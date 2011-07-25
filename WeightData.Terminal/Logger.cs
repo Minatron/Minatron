@@ -1,4 +1,7 @@
 ﻿using Band.WindowsLogger;
+using System;
+using System.Text;
+
 
 namespace Band.WeightData.Terminal
 {
@@ -13,19 +16,21 @@ namespace Band.WeightData.Terminal
             ServiceStop = 4,
             ServiceCrash = 13001,
             ServiceCannotStart = 13002,
+
+            ReciveData = 16000,
         }
 
         ILogger _log;
 
         public Logger(string name)
         {
-            _log = MultiLogger.Get(
+            _log = ConsoleLogger.Get();
+                /*MultiLogger.Get(
                 new ILogger[]
                  {
-                 ConsoleLogger.Get(),                                                                                          
+                 ConsoleLogger.Get(),
                  EventLogger.Get("WeightDataTerminalLog","WeightDataTerminal_"+name,true)
-                 }
-            );
+                 };*/
         }
 
         public void Close()
@@ -68,12 +73,13 @@ namespace Band.WeightData.Terminal
                 case EventID.ServiceCrash:
                     _log.WriteErrorMessage(id, message);
                     break;
+                case EventID.ReciveData:
+                    _log.WriteMessage(id, message);
+                    break;
                 default:
                     _log.WriteMessage(id, message);
                     break;
             }
-
-            _log.WriteMessage(id, message);
         }
     }
 }
