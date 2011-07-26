@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Presenter="clr-namespace:Band.CameraNavigator.Module.Presenter" xmlns:View="clr-namespace:Band.CameraNavigator.Module.View">
+    
+    <DataTemplate DataType="{x:Type Presenter:CameraPresenter}">
+        <View:CameraView/>
+    </DataTemplate>
+
+
+</ResourceDictionary>

@@ -3,7 +3,7 @@
     public enum CourseType
     {
         Moscow = 0,
-        SaintPetersburg
+        SaintPetersburg=1,
     }
 
     public class WeighData : Band.Storage.Core.RemovableObject
