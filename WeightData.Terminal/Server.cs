@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
-using Modbus.Data;
-using Modbus.Device;
-using Modbus.Message;
 
 namespace Band.WeightData.Terminal
 {
@@ -12,42 +8,59 @@ namespace Band.WeightData.Terminal
     {
         static void Main(string[] args)
         {
-            ServerConfig conf = new ServerConfig(args);
-            Logger log = new Logger(conf.Name);
-            Thread.CurrentThread.Name = "TERMINAL";
+            var conf = new ServerConfig(args);
+            Logger.InitWithName(conf.Name);
+            Thread.CurrentThread.Name = "SERVER";
 
-            ModbusSlave slave = ModbusTcpSlave.CreateTcp(1, new TcpListener(conf.ListenPort));
+            var slave = new TcpListener(conf.ListenPort);
 
-            log.WriteMessage(Logger.EventID.ServiceStart);
             try
             {
-			    
-                DataStore data = DataStoreFactory.CreateDefaultDataStore();
+                try
+                {
+                    slave.Start(10);
+                }
+                catch
+                {
+                    throw new Exception(@"Невозможно открыть сокет №" + conf.ListenPort.ToString());
+                }
 
-                slave.ModbusSlaveRequestReceived += (sender, arg) => 
+                while (true)
+                {
+                    TcpClient connect = null;
+                    if (slave.Pending())
                     {
-                        IModbusMessage msg = arg.Message;
-                        string text = Encoding.ASCII.GetString(msg.ProtocolDataUnit);
-                        log.WriteMessage(Logger.EventID.ReciveData, text);
-                    };
+                        try
+                        {
+                            connect = slave.AcceptTcpClient();
+                        }
+                        catch 
+                        { 
+                        }
+                    }
 
-			    slave.Listen();
-
-			    Thread.Sleep(Timeout.Infinite);                
+                    if (connect == null) {Thread.Sleep(500);  continue;}
+                    if (connect.Connected)
+                    {
+                        Terminal terminal = new Terminal(connect);
+                        Thread thread = new Thread(Terminal.DoWork);
+                        thread.Start(terminal);
+                    }
+                    Thread.Sleep(0);
+                }              
             }
             catch (OutOfMemoryException e)
             {
-                log.WriteMessage(Logger.EventID.ServiceCrash, @"ПЕРЕПОЛНЕНИЕ ВИРТУАЛЬНОЙ ПАМЯТИ: " + e.ToString());
+                Logger.WriteMessage(Logger.EventID.ServiceCrash, @"ПЕРЕПОЛНЕНИЕ ВИРТУАЛЬНОЙ ПАМЯТИ: " + e.ToString());
             }
             catch (Exception ex)
             {
-                log.WriteMessage(Logger.EventID.ServiceCrash, ex.ToString());
+                Logger.WriteMessage(Logger.EventID.ServiceCrash, ex.ToString());
             }
             finally
             {
-                slave.Dispose();
-                log.WriteMessage(Logger.EventID.ServiceStop);
-                log.Close();
+                slave.Stop();
+                Logger.Close();
             }
         }
 

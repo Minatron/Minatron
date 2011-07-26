@@ -2,7 +2,7 @@
 {
     public class ServerConfig
     {
-        public int    ListenPort = 502; //502
+        public int    ListenPort = 501; //502
         public string Name = null;
         public string DBConnectionString = null;
 
