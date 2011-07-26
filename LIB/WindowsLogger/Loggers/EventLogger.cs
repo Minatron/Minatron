@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace WindowsLogger
+namespace Band.WindowsLogger
 {
     /// <summary>
     /// Запись лога в Event Log Windows

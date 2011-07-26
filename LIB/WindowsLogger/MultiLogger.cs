@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsLogger
+namespace Band.WindowsLogger
 {
     /// <summary>
     /// объединение нескольких логгеров

@@ -6,12 +6,12 @@ using Microsoft.Practices.Unity;
 
 namespace Band.Module.WeighData
 {
-    public class Module : IModule, IActivatable
+    public class WeighDataModule : IModule, IActivatable
     {
         bool _activated = false;
         IRegionManager RegionManager { get; set; }
-       
-        public Module(IRegionManager regionManager, IUnityContainer container, ModulesActivator activator)
+
+        public WeighDataModule(IRegionManager regionManager, IUnityContainer container, ModulesActivator activator)
         {
             RegionManager = regionManager;
             activator.Register(this);

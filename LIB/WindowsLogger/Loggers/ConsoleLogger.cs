@@ -1,31 +1,25 @@
 ﻿using System;
-using System.Diagnostics;
-
-namespace WindowsLogger
+namespace Band.WindowsLogger
 {
     /// <summary>
-    /// Запись лога в Trace .NET
+    /// Запись лога а консоль приложения
     /// </summary>
-    public class TraceLogger: ILogger
+    public class ConsoleLogger : ILogger
     {
         /// <summary>
-        /// 
+        /// Взять экземпляр ConsoleLogger
         /// </summary>
-        /// <returns></returns>
+        /// <returns>ConsoleLogger</returns>
         public static ILogger Get()
         {
-            #if TRACE
-            return new TraceLogger();
-            #else
-            return null;
-            #endif
+            return new ConsoleLogger();
         }
 
         /// <summary>
-        /// 
+        /// Взять экземпляр ConsoleLogger ,только если other логгер пустой
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
+        /// <param name="other">other логгер либо null</param>
+        /// <returns>ILogger</returns>
         public static ILogger GetIfNull(ILogger other)
         {
             if (other != null) return other;
@@ -42,23 +36,24 @@ namespace WindowsLogger
         /// </summary> 
         public void WriteMessage(ushort id, object message)
         {
-            Trace.WriteLine(string.Format("{0}:[{1}] {2}", DateTime.Now,(int)id, message));
+            try
+            {
+                Console.WriteLine(string.Format("{0}:[{1}] {2}", DateTime.Now, (int)id, message));
+            }
+            catch (Exception e)
+            {
+            }
         }
-
-        /// <summary>
-        /// записать сообщение
-        /// </summary> 
         public void WriteWarningMessage(ushort id, object message)
         {
-            Trace.WriteLine(string.Format("{0}:[{1}] {2}", DateTime.Now, (int)id, message), "Warning");
+            Console.WriteLine(string.Format("Warning: {0}:[{1}] {2}", DateTime.Now, (int)id, message));
         }
-
         /// <summary>
         /// записать сообщение об ошибке
         /// </summary> 
         public void WriteErrorMessage(ushort id, object message)
         {
-            Trace.WriteLine(string.Format("{0}:[{1}] {2}", DateTime.Now, (int)id, message), "ERROR");
-        }   
+            Console.WriteLine(string.Format("ERROR: {0}:[{1}] {2}", DateTime.Now, (int)id, message));
+        }
     }
 }
