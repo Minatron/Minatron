@@ -5,13 +5,15 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A3735228-28FF-4CCA-9855-2CC64291E11D}</ProjectGuid>
+    <ProjectGuid>{F1246A66-BA11-45A6-8F3B-7B8A1F39ECCA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Band.Client.Infrastructure</RootNamespace>
-    <AssemblyName>ClientApplication.Infrastructure</AssemblyName>
+    <RootNamespace>CameraController</RootNamespace>
+    <AssemblyName>CameraController</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,61 +33,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.Composite">
-      <HintPath>..\DLIB\Prism\Desktop\Microsoft.Practices.Composite.dll</HintPath>
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>..\DLIB\Json\Newtonsoft.Json.Net35.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Composite.Presentation">
-      <HintPath>..\DLIB\Prism\Desktop\Microsoft.Practices.Composite.Presentation.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate">
-      <HintPath>..\DLIB\NHibernate\Required_Bins\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xaml" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events\DisconnectEvent.cs" />
-    <Compile Include="Events\ShowMovieForWeightDataEvent.cs" />
-    <Compile Include="ModalViewManager.cs" />
-    <Compile Include="ModulesActivator.cs" />
+    <Compile Include="Camera.cs" />
+    <Compile Include="CamerasConfigurator.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="SerializableDictionary.cs" />
+    <Compile Include="WebCommander.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\AppSettings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>AppSettings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="ShellRegionNames.cs" />
-    <Compile Include="Storage\StorageService.cs" />
+    <Compile Include="WebResults.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Exceptions\" />
-    <Folder Include="Settings\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Lib\Storage.Core\Storage.Core.csproj">
-      <Project>{07832E71-86D8-4666-BC12-970C1C8CA1E1}</Project>
-      <Name>Storage.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\StorageAPI\StorageAPI.csproj">
       <Project>{833F8AA9-A4B4-4E6F-8FD2-9307CBA7E1C8}</Project>
       <Name>StorageAPI</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Properties\AppSettings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>AppSettings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

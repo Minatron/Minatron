@@ -11,7 +11,8 @@
     <RootNamespace>Band.CameraNavigator.Module</RootNamespace>
     <AssemblyName>CameraNavigator.Module</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -37,6 +38,12 @@
     <Reference Include="Microsoft.Practices.Composite">
       <HintPath>..\DLIB\Prism\Desktop\Microsoft.Practices.Composite.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.Composite.Presentation">
+      <HintPath>..\DLIB\Prism\Desktop\Microsoft.Practices.Composite.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\DLIB\Prism\Desktop\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -53,12 +60,52 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Module.cs" />
+    <Compile Include="Presenter\CameraPresenter.cs" />
+    <Compile Include="Presenter\ControllerPresenter.cs" />
+    <Compile Include="View\CameraView.xaml.cs">
+      <DependentUpon>CameraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ControllerView.xaml.cs">
+      <DependentUpon>ControllerView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\CameraView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ControllerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CameraController\CameraController.csproj">
+      <Project>{F1246A66-BA11-45A6-8F3B-7B8A1F39ECCA}</Project>
+      <Name>CameraController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClientApplication.Infrastructure\ClientApplication.Infrastructure.csproj">
+      <Project>{A3735228-28FF-4CCA-9855-2CC64291E11D}</Project>
+      <Name>ClientApplication.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LIB\Storage.Core\Storage.Core.csproj">
+      <Project>{07832E71-86D8-4666-BC12-970C1C8CA1E1}</Project>
+      <Name>Storage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StorageAPI\StorageAPI.csproj">
+      <Project>{833F8AA9-A4B4-4E6F-8FD2-9307CBA7E1C8}</Project>
+      <Name>StorageAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
