@@ -8,11 +8,11 @@ namespace Band.WeightData.Terminal
     {
         static void Main(string[] args)
         {
-            var conf = new ServerConfig(args);
-            Logger.InitWithName(conf.Name);
+            ServerConfig.ParseConfig(args);
+            Logger.InitWithName(ServerConfig.Name);
             Thread.CurrentThread.Name = "SERVER";
 
-            var slave = new TcpListener(conf.ListenPort);
+            var slave = new TcpListener(ServerConfig.ListenPort);
 
             try
             {
@@ -22,7 +22,7 @@ namespace Band.WeightData.Terminal
                 }
                 catch
                 {
-                    throw new Exception(@"Невозможно открыть сокет №" + conf.ListenPort.ToString());
+                    throw new Exception(@"Невозможно открыть сокет №" + ServerConfig.ListenPort.ToString());
                 }
 
                 while (true)

@@ -18,6 +18,7 @@ namespace Band.WeightData.Terminal
             ServiceCannotStart = 13002,
 
             StoreData = 16000,
+            ErrorData = 18000
         }
 
         static ILogger _log = null;
@@ -68,6 +69,9 @@ namespace Band.WeightData.Terminal
                     break;
                 case EventID.StoreData:
                     _log.WriteMessage(id,string.Format("Получен пакет {0}", message));
+                    break;
+                case EventID.ErrorData:
+                    _log.WriteMessage(id, string.Format("Неверный формат пакета {0}", message));
                     break;
                 default:
                     _log.WriteMessage(id, message);
