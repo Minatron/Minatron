@@ -13,16 +13,10 @@
     <Grid >
         <Border Background="{DynamicResource TextureBrush}" Opacity="0.2"/>
 
-        <Grid  Visibility="{Binding ModalView.HasContent, Converter={x:Static conv:True.ToCollapsed}}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <ContentControl Grid.Column="0" cal:RegionManager.RegionName="{x:Static inf:ShellRegionNames.Content}"/>
-            <ContentControl Grid.Column="1"  cal:RegionManager.RegionName="{x:Static inf:ShellRegionNames.CameraController}"/>
-        </Grid>
+      <ContentControl cal:RegionManager.RegionName="{x:Static inf:ShellRegionNames.Content}" Visibility="{Binding ModalView.HasContent, Converter={x:Static conv:True.ToCollapsed}}"/>
+        <ContentControl Content="{Binding ModalView.ContentControl}" Visibility="{Binding ModalView.ContentControl, Converter={x:Static conv:Null.ToCollapsed}}"/>
 
-        <Grid  Grid.ColumnSpan="2"  Visibility="{Binding ModalView.HasContent, Converter={x:Static conv:False.ToCollapsed}}" >
+        <Grid  Grid.ColumnSpan="2"  Visibility="{Binding ModalView.CenterControl, Converter={x:Static conv:Null.ToCollapsed}}" >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -35,7 +29,7 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
-            <ContentControl   Margin="5,5,5,10"  Grid.Column="1" Grid.Row="1" Content="{Binding ModalView.Control}" VerticalAlignment="Center" />
+            <ContentControl   Margin="5,5,5,10"  Grid.Column="1" Grid.Row="1" Content="{Binding ModalView.CenterControl}" VerticalAlignment="Center" />
         </Grid>
 
     </Grid>

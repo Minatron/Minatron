@@ -3,7 +3,7 @@ using NHibernate;
 
 namespace Band.Storage
 {
-    public class SortFilter 
+    public class SortFilter : IStorageFilter
     {
         public enum Orders { ASC, DESC };
 

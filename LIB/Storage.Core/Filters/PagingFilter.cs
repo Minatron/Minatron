@@ -3,7 +3,7 @@ using NHibernate;
 
 namespace Band.Storage
 {
-    public class PagingFilter 
+    public class PagingFilter : IStorageFilter
     {
         int m_copacity;
         int m_number;
