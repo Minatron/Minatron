@@ -11,7 +11,8 @@
     <RootNamespace>WeightDataTest.Module</RootNamespace>
     <AssemblyName>WeightDataTest.Module</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -100,6 +101,10 @@
     <ProjectReference Include="..\LIB\Storage.Core\Storage.Core.csproj">
       <Project>{07832E71-86D8-4666-BC12-970C1C8CA1E1}</Project>
       <Name>Storage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LIB\WPF.Patterns\WPF.Patterns.csproj">
+      <Project>{82F61BFF-F9A4-451D-A5DE-F68363AD1DC2}</Project>
+      <Name>WPF.Patterns</Name>
     </ProjectReference>
     <ProjectReference Include="..\StorageAPI\StorageAPI.csproj">
       <Project>{833F8AA9-A4B4-4E6F-8FD2-9307CBA7E1C8}</Project>
