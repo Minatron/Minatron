@@ -61,6 +61,16 @@ namespace CameraController
                                                      }).ToList();
             }
         }
+
+        public Channel GetChannelByName(string name)
+        {
+            return Channels.ToList().Find(each => each.Name == name);
+        }
+
+        public Channel GetChannelByID(string s)
+        {
+            return Channels.ToList().Find(each => each.Id == s);
+        }
     }
 
 
@@ -85,6 +95,19 @@ namespace CameraController
         public string VideoAddress
         {
             get { return (string) Obj["va"]; }
+        }
+    }
+
+    public class StatusResult : WebResult
+    {
+        public StatusResult(JObject obj) : base(obj)
+        {
+
+        }
+
+        public string GetStatus(Channel cnannel)
+        {
+            return (string) Obj[cnannel.Id];
         }
     }
 }

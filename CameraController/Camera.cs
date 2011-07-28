@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -8,9 +9,11 @@ using System.Threading;
 namespace CameraController
 {
 
-    public delegate void JPEGReady(byte[] jpeg);
+  
     public class Camera
     {
+        public delegate void JPEGReady(byte[] jpeg);
+        public delegate void StatusReady(string status);
         private readonly WebCommander _commander;
         private readonly LoginResult _session;
         private readonly Channel _data;
@@ -18,9 +21,22 @@ namespace CameraController
 
 
         public event JPEGReady OnJPEGReady;
+        public event StatusReady OnStatusReady;
+
+        public void InvokeOnStatusReady(string status)
+        {
+            StatusReady handler = OnStatusReady;
+            if (handler != null) handler(status);
+           
+        }
 
         public bool InArchiveMode { get; private set; }
         public bool IsPlaying { get; private set; }
+
+        public void SetStatus(StatusResult sr)
+        {
+            if(sr!=null) InvokeOnStatusReady(sr.GetStatus(_data));
+        }
 
         public Channel Data
         {
@@ -31,9 +47,12 @@ namespace CameraController
 
         public void InvokeOnJPEGReady(byte[] jpeg)
         {
+            if (IsFreeze) return;
+            
             CurrentJpeg = jpeg;
             var handler = OnJPEGReady;
             if (handler != null) handler(jpeg);
+            Trace.WriteLine(Data.Name);
         }
 
         public Camera(WebCommander commander, LoginResult session, Channel data)
@@ -52,7 +71,6 @@ namespace CameraController
         {
             try
             {
-                
                 InvokeOnJPEGReady(_commander.GetJPEG(_session, Data));
             }
             catch (Exception ex)
@@ -60,21 +78,43 @@ namespace CameraController
                                
             }
         }
-
-        public bool ToArchive(DateTime time)
+        public bool ToArchiveUnFreeze(DateTime time)
         {
-            if (IsFreeze) return false;
+            if (_currentFrameTime == time) return false;
+            UnFreeze();
             try
             {
                 StopPlay();
                 if (!InArchiveMode)
                 {
                     var enterResult = _commander.ArchiveEnter(_session, Data, true);
+
                     if (enterResult.Result <= 0) throw new Exception();
                 }
+                _currentFrameTime = time;
                 var seekResult = _commander.ArchiveSeek(_session, Data, time);
                 if (seekResult.Result <= 0) throw new Exception();
-                ShowFrame(null);
+                ThreadPool.QueueUserWorkItem(ShowFrame);
+                InArchiveMode = true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool ToArchive(DateTime time)
+        {
+          
+            if (IsFreeze) return false;
+            try
+            {
+                StopPlay();
+                _currentFrameTime = time;
+                var seekResult = _commander.ArchiveSeek(_session, Data, time);
+                if (seekResult.Result <= 0) throw new Exception();
+                ThreadPool.QueueUserWorkItem(ShowFrame);
                 InArchiveMode = true;
             }
             catch (Exception)
@@ -139,52 +179,40 @@ namespace CameraController
             return true;
         }
 
-        public bool ArchiveNextFrame()
+        public void ArchiveNextFrame()
         {
-            if (IsFreeze) return false;
-            if (!InArchiveMode) return false;
+            if (IsFreeze) return;
+            if (!InArchiveMode) return;
             StopPlay();
-            try
-            {
-                var res = _commander.ArchiveFrameNext(_session, Data);
-                if (res.Result <= 0) throw new Exception();
-                ShowFrame(null);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
+            ThreadPool.QueueUserWorkItem(ShowFrame);
         }
 
-        public bool ArchivePrevFrame()
+        public void ArchivePrevFrame()
         {
-            if (IsFreeze) return false;
-            if (!InArchiveMode) return false;
+            if (IsFreeze) return;
+            if (!InArchiveMode) return;
             StopPlay();
-            try
-            {
-                var res = _commander.ArchiveFramePrev(_session, Data);
-                if (res.Result <= 0) throw new Exception();
-                ShowFrame(null);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
+            ThreadPool.QueueUserWorkItem(ShowFrame);           
         }
 
         private bool _stop = false;
+        private object _lockObject = new object();
+        private DateTime _currentFrameTime = DateTime.Now;
+
+       
         private void GetFrameProc(object state)
         {
-            _stop = false;
-            IsPlaying = true;
-            while (!_stop)
-            {
-                ShowFrame(null);
-            }
-            IsPlaying = false;
+           // lock (_lockObject)
+         //   {
+                _stop = false;
+                IsPlaying = true;
+                while (!_stop)
+                {
+                    ShowFrame(null);
+                }
+                IsPlaying = false;
+          //  }
+            
         }
 
 
@@ -198,9 +226,25 @@ namespace CameraController
         public void StopPlay()
         {
             _stop = true;
+            //lock (_lockObject)
+            //{
+                
+            //}
            
         }
 
-        protected bool IsFreeze { get; private set; }
+        public bool IsFreeze { get; private set; }
+
+        public void Freeze()
+        {
+            if( !InArchiveMode) return;
+            StopPlay();
+            //StopPlayArchive();
+            IsFreeze = true;
+        }
+        public void UnFreeze()
+        {
+            IsFreeze = false;
+        }
     }
 }

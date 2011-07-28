@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\DisconnectEvent.cs" />
+    <Compile Include="Events\FreezeEvent.cs" />
     <Compile Include="Events\ShowMovieForWeightDataEvent.cs" />
     <Compile Include="ModalViewManager.cs" />
     <Compile Include="ModulesActivator.cs" />

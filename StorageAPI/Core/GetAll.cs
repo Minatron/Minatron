@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Band.Storage.Minatron.Data;
 using NHibernate;
 
 

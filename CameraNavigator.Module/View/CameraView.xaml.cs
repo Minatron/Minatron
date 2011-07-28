@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Band.CameraNavigator.Module.Presenter;
+using CameraController;
 
 namespace Band.CameraNavigator.Module.View
 {
@@ -23,5 +25,7 @@ namespace Band.CameraNavigator.Module.View
         {
             InitializeComponent();
         }
+
+      
     }
 }

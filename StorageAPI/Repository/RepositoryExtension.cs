@@ -1,4 +1,5 @@
 ﻿using Band.Storage.Core;
+using Band.Storage.Minatron.Repository;
 
 namespace Band.Storage.Minatron
 {

@@ -1,17 +1,17 @@
 ﻿using Band.Client.Infrastructure;
-using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Modularity;
 using Microsoft.Practices.Composite.Regions;
 using Microsoft.Practices.Unity;
+using WeightDataTest.Module.Views;
 
-namespace Band.Module.WeighDataModule
+namespace WeightDataTest.Module
 {
-    public class WeighDataModule : IModule, IActivatable
+    public class WeighDataTestModule : IModule, IActivatable
     {
         bool _activated = false;
         IRegionManager RegionManager { get; set; }
 
-        public WeighDataModule(IRegionManager regionManager, IUnityContainer container, ModulesActivator activator)
+        public WeighDataTestModule(IRegionManager regionManager, IUnityContainer container, ModulesActivator activator)
         {
             RegionManager = regionManager;
             activator.Register(this);
@@ -36,7 +36,7 @@ namespace Band.Module.WeighDataModule
 
         void InitializeAfterActivate()
         {
-            RegionManager.RegisterViewWithRegion(ShellRegionNames.Content, typeof(Views.WeighDataView));
+            RegionManager.RegisterViewWithRegion(ShellRegionNames.Content, typeof(WeighDataView));
         }
     }
 }

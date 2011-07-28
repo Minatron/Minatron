@@ -6,13 +6,13 @@ using Band.Storage.Minatron.Data;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Presentation.Commands;
 
-namespace Band.Module.WeighData.Presenters
+namespace WeightDataTest.Module.Presenters
 {
-    public class WeighDataPresenter : INotifyPropertyChanged
+    public class WeighDataTestPresenter : INotifyPropertyChanged
     {
         private readonly IEventAggregator _aggregator;
 
-        public WeighDataPresenter(IEventAggregator aggregator)
+        public WeighDataTestPresenter(IEventAggregator aggregator)
         {
             _aggregator = aggregator;
             WeightTime =DateTime.Now.Subtract(new TimeSpan(4));

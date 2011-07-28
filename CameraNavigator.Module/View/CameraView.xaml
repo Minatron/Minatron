@@ -2,13 +2,39 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Band.WPF.Commands;assembly=WPF.Patterns" mc:Ignorable="d" 
             >
     <Grid>
-        <Border BorderBrush="White"  BorderThickness="1" Margin="3">
-            <Image Source="{Binding CameraImage}" Stretch="Fill" Width="160" Height="120" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            </Image>
-        </Border>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <ContentControl Content="{Binding}">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="White"  BorderThickness="2" Margin="3" x:Name="Border1">
+                        <Image Source="{Binding CameraImage}"  Stretch="Fill" Width="160" Height="120"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                            <local:CommandBehaviorCollection.Behaviors>
+                                <local:BehaviorBinding Event="MouseLeftButtonDown" Command="{Binding FreezeCamera}" />
+                            </local:CommandBehaviorCollection.Behaviors>
+                        </Image>
+
+                    </Border>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding  IsFreeze}" Value="True">
+                            <Setter TargetName="Border1" Property="BorderBrush" Value="Red" ></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding  IsFreeze}" Value="False">
+                            <Setter TargetName="Border1" Property="BorderBrush" Value="White" ></Setter>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                    
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
+        
+        <TextBlock Text="{Binding CameraName}"  Margin="10,5,0,0" Width="160" Height="20" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Status}" Grid.Row="1" TextAlignment="Center" />
     </Grid>
 </UserControl>

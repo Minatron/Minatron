@@ -1,4 +1,4 @@
-﻿namespace Band.Storage.Minatron
+﻿namespace Band.Storage.Minatron.Data
 {
     public enum CourseType
     {
@@ -8,9 +8,9 @@
 
     public class WeighData : Band.Storage.Core.RemovableObject
     {
-        public virtual CourseType Course { get; protected set; }
-        public virtual System.DateTime WeighTime { get; protected set; }
-	    public virtual float Weigh { get; protected set; }
-        public virtual float AvgSpeed { get; protected set; }
+        public virtual CourseType Course { get;  set; }
+        public virtual System.DateTime WeighTime { get; set; }
+	    public virtual float Weigh { get; set; }
+        public virtual float AvgSpeed { get; set; }
     }
 }

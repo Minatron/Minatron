@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using Band.Storage.Core;
+using Band.Storage.Minatron.Data;
 
-namespace Band.Storage.Minatron
+namespace Band.Storage.Minatron.Repository
 {
     public class WeighDataRepository : Band.Storage.RepositoryBase<WeighData>
     {

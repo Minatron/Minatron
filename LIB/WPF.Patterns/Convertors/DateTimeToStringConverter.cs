@@ -4,6 +4,12 @@ using System.Windows.Data;
 
 namespace Band.WPF.Convertors
 {
+
+    public static class FromString
+    {
+        public static IValueConverter ToDateTime = new DateTimeToStringConverter1();
+    }
+
     public class DateTimeToStringConverter:IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
