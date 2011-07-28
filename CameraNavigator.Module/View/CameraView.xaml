@@ -14,7 +14,7 @@
             <ContentControl.ContentTemplate>
                 <DataTemplate>
                     <Border BorderBrush="White"  BorderThickness="2" Margin="3" x:Name="Border1">
-                        <Image Source="{Binding CameraImage}"  Stretch="Fill" Width="160" Height="120"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                        <Image Source="{Binding CameraImage}"  Stretch="Fill" Width="320" Height="240"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
                             <local:CommandBehaviorCollection.Behaviors>
                                 <local:BehaviorBinding Event="MouseLeftButtonDown" Command="{Binding FreezeCamera}" />
                             </local:CommandBehaviorCollection.Behaviors>

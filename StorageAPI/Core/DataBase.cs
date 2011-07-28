@@ -1,5 +1,4 @@
 ﻿using Band.Storage.Core;
-using Band.Storage.Minatron.Data;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;

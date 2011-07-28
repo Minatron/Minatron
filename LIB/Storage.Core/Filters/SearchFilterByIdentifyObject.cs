@@ -5,7 +5,7 @@ using NHibernate.Criterion;
 
 namespace Band.Storage
 {
-    public class SearchFilterByIdentifyObject 
+    public class SearchFilterByIdentifyObject : IStorageFilter
     {
         string _propertyName;
 

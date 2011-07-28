@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Band.WeightData.Terminal
 {
-    public class Logger : ILogger
+    public class Logger 
     {
         public enum EventID : ushort
         {
@@ -17,45 +17,39 @@ namespace Band.WeightData.Terminal
             ServiceCrash = 13001,
             ServiceCannotStart = 13002,
 
-            ReciveData = 16000,
+            StoreData = 16000,
+            ErrorData = 18000
         }
 
-        ILogger _log;
+        static ILogger _log = null;
 
-        public Logger(string name)
+        public static void InitWithName(string name)
         {
-            _log = ConsoleLogger.Get();
-                /*MultiLogger.Get(
+            _log = MultiLogger.Get(
                 new ILogger[]
                  {
                  ConsoleLogger.Get(),
                  EventLogger.Get("WeightDataTerminalLog","WeightDataTerminal_"+name,true)
-                 };*/
+                 });
+            WriteMessage(Logger.EventID.ServiceStart);
         }
 
-        public void Close()
+        public static void Close()
         {
+            WriteMessage(Logger.EventID.ServiceStop);
             _log.Close();
         }
 
-        public void WriteMessage(EventID id)
+        public static void WriteMessage(EventID id)
         {
             WriteMessage((ushort)id, "");
         }
-        public void WriteMessage(EventID id, object message)
+        public static void WriteMessage(EventID id, object message)
         {
             WriteMessage((ushort)id, message);
         }
-
-        public void WriteErrorMessage(ushort id, object message)
-        {
-            WriteMessage(id, message);
-        }
-        public void WriteWarningMessage(ushort id, object message)
-        {
-            WriteMessage(id, message);
-        }
-        public void WriteMessage(ushort id, object message)
+        
+        public static void WriteMessage(ushort id, object message)
         {
             if (message == null) message = "";
 
@@ -73,8 +67,11 @@ namespace Band.WeightData.Terminal
                 case EventID.ServiceCrash:
                     _log.WriteErrorMessage(id, message);
                     break;
-                case EventID.ReciveData:
-                    _log.WriteMessage(id, message);
+                case EventID.StoreData:
+                    _log.WriteMessage(id,string.Format("Получен пакет {0}", message));
+                    break;
+                case EventID.ErrorData:
+                    _log.WriteMessage(id, string.Format("Неверный формат пакета {0}", message));
                     break;
                 default:
                     _log.WriteMessage(id, message);

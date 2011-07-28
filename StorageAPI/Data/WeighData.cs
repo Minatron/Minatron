@@ -1,4 +1,4 @@
-﻿namespace Band.Storage.Minatron.Data
+﻿namespace Band.Storage.Minatron
 {
     public enum CourseType
     {

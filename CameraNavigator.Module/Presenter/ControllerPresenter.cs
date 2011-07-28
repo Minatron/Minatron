@@ -4,10 +4,10 @@ using System.ComponentModel;
 using System.Windows.Input;
 using Band.Client.Infrastructure.Events;
 using Band.Storage.Minatron;
-using Band.Storage.Minatron.Data;
 using CameraController;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Presentation.Commands;
+using Microsoft.Practices.Composite.Presentation.Events;
 
 namespace Band.CameraNavigator.Module.Presenter
 {
@@ -19,7 +19,7 @@ namespace Band.CameraNavigator.Module.Presenter
         {
             _controller = controller;
             _eventAgrigator = eventAgrigator;
-            _eventAgrigator.GetEvent<ShowMovieForWeightDataEvent>().Subscribe(ProcessWeightData);
+            _eventAgrigator.GetEvent<ShowMovieForWeightDataEvent>().Subscribe(ProcessWeightData,ThreadOption.UIThread,true);
             _eventAgrigator.GetEvent<FreezeEvent>().Subscribe(e=>InvokePropertyChanged("FreezedImages"));
             _controller.SetToRealTime();
             Play = new DelegateCommand<object>(PlayInvoke);

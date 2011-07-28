@@ -66,17 +66,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Module.cs" />
+    <Compile Include="Presenters\PageInfoPresenter.cs" />
+    <Compile Include="Presenters\WeighDataCamerasPresenter.cs" />
     <Compile Include="Presenters\WeighDataPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <AppDesigner Include="Properties\" />
+    <Compile Include="Views\WeighDataCamerasView.xaml.cs">
+      <DependentUpon>WeighDataCamerasView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WeighDataView.xaml.cs">
       <DependentUpon>WeighDataView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Resource Include="..\Resources\Images\refresh.png">
+      <Link>Views\refresh.png</Link>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\WeighDataCamerasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\WeighDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,6 +112,11 @@
       <Project>{833F8AA9-A4B4-4E6F-8FD2-9307CBA7E1C8}</Project>
       <Name>StorageAPI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\Resources\Images\back.png">
+      <Link>Views\back.png</Link>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

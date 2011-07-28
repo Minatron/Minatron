@@ -1,44 +1,109 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
+using Band.Client.Infrastructure;
 using Band.Client.Infrastructure.Events;
-using Band.Storage.Minatron.Data;
+using Band.Client.Infrastructure.Storage;
+using Band.Storage;
+using Band.Storage.Minatron;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Presentation.Commands;
+using Microsoft.Practices.Unity;
+using Weigh = Band.Storage.Minatron.WeighData;
 
 namespace Band.Module.WeighData.Presenters
 {
     public class WeighDataPresenter : INotifyPropertyChanged
     {
-        private readonly IEventAggregator _aggregator;
+        readonly IUnityContainer _container;
+        readonly StorageService _storage;
 
-        public WeighDataPresenter(IEventAggregator aggregator)
+        WeighDataRepository _repository;
+
+        public PageInfoPresenter Page { get; private set; }
+
+        public ICommand ShowCameraNavigatorCommand { get; protected set; }
+        public ICommand NextPageCommand { get; protected set; }
+        public ICommand PrevPageCommand { get; protected set; }
+        public ICommand RefreshCommand { get; protected set; }
+
+        public WeighDataPresenter(IUnityContainer container,StorageService storage)
         {
-            _aggregator = aggregator;
-            WeightTime =DateTime.Now.Subtract(new TimeSpan(4));
-            InvokePropertyChanged("WeightTime");
-            ShowArchive = new DelegateCommand<object>(ShowArchiveNextInvoke);
+            Page = new PageInfoPresenter();
+            _container = container;
+            _storage = storage;
 
+            ShowCameraNavigatorCommand = new DelegateCommand<Weigh>(ShowCameraNavigator);
+            RefreshCommand = new DelegateCommand<object>(Refresh);
+            NextPageCommand = new DelegateCommand<object>(NextPage);
+            PrevPageCommand = new DelegateCommand<object>(PrevPage);
         }
 
-        private void ShowArchiveNextInvoke(object obj)
+        void ShowCameraNavigator(Weigh obj)
         {
-           var res = new Band.Storage.Minatron.Data.WeighData(){AvgSpeed = (float) Speed,Course = (CourseType) Course,Weigh = (float) Weight,WeighTime = WeightTime};
-           _aggregator.GetEvent<ShowMovieForWeightDataEvent>().Publish(res);
+            _container.Resolve<ModalViewManager>().Show(_container.Resolve<Views.WeighDataCamerasView>());
+            Application.Current.MainWindow.UpdateLayout();
+            _container.Resolve<IEventAggregator>().GetEvent<ShowMovieForWeightDataEvent>().Publish(obj);
+          
+        }
+        void Refresh(object obj = null)
+        {
+            OnPropertyChanged("Objects");
+        }
+        void NextPage(object obj = null)
+        {
+            Page.Index++;
+            Refresh(obj);
+        }
+        void PrevPage(object obj = null)
+        {
+            Page.Index--;
+            Refresh(obj);
+        }
+        
+        IEnumerable<IStorageFilter> CurrentFilters
+        {
+            get
+            {
+                List<IStorageFilter> filters = new List<IStorageFilter>();
+                filters.Add(new PagingFilter(PageInfoPresenter.CAPACITY, Page.Index));
+                filters.Add(new SortFilter("WeighTime" , SortFilter.Orders.DESC));
+                return filters;
+            }
+        }
+        public IList<Weigh> Objects
+        {
+            get
+            {
+                if (_repository == null) _repository = _storage.CreateWeighDataRepository();
+
+                IList<Weigh> result = new Weigh[0];
+                if (!_storage.SafeDo(() => result = _repository.GetAll(CurrentFilters) ?? result))
+                {
+                    _repository.CloseSession();
+                    _repository = null;
+                }
+                else
+                {
+                    Page.setPropertyForCountObjects(result.Count);
+                }
+                return result;
+            }
         }
 
-        public DateTime WeightTime { get; set; }
-        public double Speed{ get; set; }
-        public double Weight { get; set; }
-        public int Course { get; set; }
+        #region INotifyPropertyChanged
 
-        public ICommand ShowArchive { get; private set; }
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged == null) return;
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void InvokePropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(name));
-        }
+        #endregion
     }
 }
+

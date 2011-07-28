@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Band.Module.WeighData.Views.WeighDataCamerasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:cal="http://www.codeplex.com/CompositeWPF"
+             xmlns:lang="clr-namespace:Band.WPF.Localization;assembly=WPF.Patterns" 
+	         xmlns:conv="clr-namespace:Band.WPF.Convertors;assembly=WPF.Patterns"
+             xmlns:inf="clr-namespace:Band.Client.Infrastructure;assembly=ClientApplication.Infrastructure" 
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Menu HorizontalAlignment="Right" Background="Transparent">
+                    <MenuItem Command="{Binding CloseMeCommand}">
+                        <MenuItem.Header>
+                            <WrapPanel>
+                                <Image Source="back.png" Width="16" Margin="-15,0,0,0" />
+                                <TextBlock Text="Список событий" Margin="10,1,0,0" Foreground="White"/>
+                            </WrapPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>
+            </StackPanel>
+        </Grid>
+        
+        <ContentControl Grid.Row="1" cal:RegionManager.RegionName="{x:Static inf:ShellRegionNames.CameraController}"/>
+    </Grid>
+</UserControl>

@@ -29,10 +29,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraController", "CameraController\CameraController.csproj", "{F1246A66-BA11-45A6-8F3B-7B8A1F39ECCA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TESTS", "TESTS", "{6F27FADA-9D58-4FA4-B19A-4F1197A78391}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCameraNavigator", "Tests\TestCameraNavigator\TestCameraNavigator.csproj", "{20B16C37-749B-4D78-B70A-6F76661E0B38}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F08E451-821C-44BD-8E72-5DCF8421D66F}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
 		Minatron.vsmdi = Minatron.vsmdi
@@ -40,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeightDataTest.Module", "WeightDataTest.Module\WeightDataTest.Module.csproj", "{E96A70FE-449A-4101-B0FD-336D59F31450}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCameraNavigator", "Tests\TestCameraNavigator\TestCameraNavigator.csproj", "{20B16C37-749B-4D78-B70A-6F76661E0B38}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -169,6 +167,5 @@ Global
 		{1458AC99-D0A9-4D58-A347-64CE2457D69C} = {1020752D-E97E-4A3C-B94D-986A291FED2B}
 		{E96A70FE-449A-4101-B0FD-336D59F31450} = {1020752D-E97E-4A3C-B94D-986A291FED2B}
 		{20B16C37-749B-4D78-B70A-6F76661E0B38} = {6F27FADA-9D58-4FA4-B19A-4F1197A78391}
-		{0F08E451-821C-44BD-8E72-5DCF8421D66F} = {6F27FADA-9D58-4FA4-B19A-4F1197A78391}
 	EndGlobalSection
 EndGlobal

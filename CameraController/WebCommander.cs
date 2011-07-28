@@ -143,8 +143,8 @@ namespace CameraController
         private object lockobject = new object();
         public byte[] GetJPEG( LoginResult lr, Channel channel)
         {
-            lock (lockobject)
-            {
+          //  lock (lockobject)
+           // {
                 byte[] res = null;
                 try
                 {
@@ -157,7 +157,7 @@ namespace CameraController
 
                 }
                 return res;
-           }
+          // }
         }
 
     }

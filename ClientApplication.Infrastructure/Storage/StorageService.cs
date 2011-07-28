@@ -1,6 +1,8 @@
 ﻿using Band.Storage.Core;
 using Band.Storage.Minatron.Core;
 using Microsoft.Practices.Composite.Events;
+using System;
+using Band.Storage;
 
 namespace Band.Client.Infrastructure.Storage
 {
@@ -40,6 +42,21 @@ namespace Band.Client.Infrastructure.Storage
         public NHibernate.ISession OpenSession()
         {
             return _db.OpenSession();
+        }
+
+        public bool SafeDo(Action action)
+        {
+            bool result = false;
+            try
+            {
+                action();
+                result = true;
+            }
+            catch (ConnectException)
+            {
+                 _eventAgregator.GetEvent<Events.DisconnectEvent>().Publish(null);
+            }
+            return result;
         }
     }
 }

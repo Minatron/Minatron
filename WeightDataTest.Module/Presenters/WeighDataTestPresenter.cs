@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using Band.Client.Infrastructure.Events;
-using Band.Storage.Minatron.Data;
+using Band.Storage.Minatron;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Presentation.Commands;
 
@@ -23,7 +23,7 @@ namespace WeightDataTest.Module.Presenters
 
         private void ShowArchiveNextInvoke(object obj)
         {
-           var res = new Band.Storage.Minatron.Data.WeighData(){AvgSpeed = (float) Speed,Course = (CourseType) Course,Weigh = (float) Weight,WeighTime = WeightTime};
+           var res = new WeighData(){AvgSpeed = (float) Speed,Course = (CourseType) Course,Weigh = (float) Weight,WeighTime = WeightTime};
            _aggregator.GetEvent<ShowMovieForWeightDataEvent>().Publish(res);
         }
 

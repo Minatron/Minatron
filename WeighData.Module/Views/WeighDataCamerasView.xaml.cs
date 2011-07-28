@@ -1,8 +1,8 @@
 ﻿namespace Band.Module.WeighData.Views
 {
-    public partial class WeighDataView 
+    public partial class WeighDataCamerasView 
     {
-        public WeighDataView(Presenters.WeighDataPresenter presenter)
+        public WeighDataCamerasView(Presenters.WeighDataCamerasPresenter presenter)
         {
             InitializeComponent();
             DataContext = presenter;

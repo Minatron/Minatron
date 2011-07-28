@@ -47,13 +47,15 @@ namespace CameraController
                     var channels = _commander.GetChannels(_session);
                     if (_configurator == null)
                     {
+                     
                         _configurator = new CamerasConfigurator();
-                        _configurator.AddCameraToDirection(channels.GetChannelByID("5e73972f-3b78-4c96-b1fb-8e97632bea2e"), 0);
-                        _configurator.AddCameraToDirection(channels.GetChannelByID("ac998b73-38d5-4cdd-bf4a-1d6ca9dce859"), 0);
-                        _configurator.AddCameraToDirection(channels.GetChannelByID("5cdec79f-6552-4e11-995d-1c0736513ecf"), 0);
-                        _configurator.AddCameraToDirection(channels.GetChannelByID("ef4fc01e-a8f3-474b-b9fb-7ebc81c5364d"), 1);
-                        _configurator.AddCameraToDirection(channels.GetChannelByID("e5b86eb0-07a8-4d57-b2a2-1321ab981955"), 1);
-                        _configurator.AddCameraToDirection(channels.GetChannelByID("b3d506ab-4a7e-4a9b-a47d-0eb87b6cbf98"), 1);
+                           channels.Channels.ToList().ForEach(each=>_configurator.AddCameraToDirection(each,1));
+                    //    _configurator.AddCameraToDirection(channels.GetChannelByID("5e73972f-3b78-4c96-b1fb-8e97632bea2e"), 0);
+                    //    _configurator.AddCameraToDirection(channels.GetChannelByID("ac998b73-38d5-4cdd-bf4a-1d6ca9dce859"), 0);
+                    //    _configurator.AddCameraToDirection(channels.GetChannelByID("5cdec79f-6552-4e11-995d-1c0736513ecf"), 0);
+                    //    _configurator.AddCameraToDirection(channels.GetChannelByID("ef4fc01e-a8f3-474b-b9fb-7ebc81c5364d"), 1);
+                    //    _configurator.AddCameraToDirection(channels.GetChannelByID("e5b86eb0-07a8-4d57-b2a2-1321ab981955"), 1);
+                    //    _configurator.AddCameraToDirection(channels.GetChannelByID("b3d506ab-4a7e-4a9b-a47d-0eb87b6cbf98"), 1);
                     }
                     channels.Channels.ToList().ForEach(each=> Cameras.Add(new Camera(_commander,_session,each)));
                 }
