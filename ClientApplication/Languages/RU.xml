@@ -8,4 +8,21 @@
     <ReconnectButton>Востановить связь</ReconnectButton>
     <NoConnection>Нет связи с БД</NoConnection>
   </Shell>
+  <CameraNavigator>
+    <ControllerErrors>
+      <LoginError>Вход на сервер невозможен!</LoginError>
+      <CamerasError>Неудалось получить список камер с сервера!</CamerasError>
+      <PlayError>Команда проиграть архив не прошла!</PlayError>
+      <StopError>Команда остановить проигрование архива не прошла!</StopError>
+      <FrameNextError>Команда следущий кадр не прошла!</FrameNextError>
+      <FramePrevError>Команда предыдущий кадр не прошла!</FramePrevError>
+      <SeekError>Команда задать время архива не прошла!</SeekError>
+    </ControllerErrors>
+    <CameraErrors>
+      <LoadVideoError>Ошибка загрузки видео!</LoadVideoError>
+      <EnterToArchiveError>Ошибка входа в архив!</EnterToArchiveError>
+      <RealTimeEnterException>Ошибка входа в режим реального времени!</RealTimeEnterException>
+    </CameraErrors>
+  </CameraNavigator>
+  
 </LanguagesResource>

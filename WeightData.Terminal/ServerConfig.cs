@@ -7,7 +7,7 @@
         static string db_server = "(local)";
         static string db_name = "WeighDataBase";
         static string db_user = "sa";
-        static string db_pwd = "";
+        static string db_pwd = @"hhh\hhh";
         static bool db_sspi = true;
         public static int Course = 0;
 

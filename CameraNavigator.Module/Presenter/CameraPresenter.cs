@@ -24,23 +24,43 @@ namespace Band.CameraNavigator.Module.Presenter
             _eventAgrigator = eventAgrigator;
             Camera.OnJPEGReady += _camera_OnJPEGReady;
             Camera.OnStatusReady += _camera_OnStatusReady;
+            Camera.OnException += new CameraController.Camera.CameraExeption(Camera_OnException);
             FreezeCamera = new DelegateCommand<object>(InvokeFreezCamera);
+        }
+
+        void Camera_OnException(CameraExceptions exception)
+        {
+            CameraException = exception;
+            InvokePropertyChanged("CameraException");
         }
 
         public bool IsFreeze { get { return Camera.IsFreeze; }}
 
+        public CameraExceptions CameraException { get; private set; }
 
         public void InvokeFreezCamera(object obj)
         {
             if (Camera.IsFreeze) Camera.UnFreeze();
-            else Camera.Freeze();
+            else
+            {
+                Camera.Freeze();
+               _camera_OnStatusReady("");
+            }
             _eventAgrigator.GetEvent<FreezeEvent>().Publish(null);
+            
             InvokePropertyChanged("IsFreeze");
         }
 
         void _camera_OnStatusReady(string status)
         {
-            Status = status;
+            if (Camera.IsFreeze)
+            {
+                if(Status!=null) Status =  Status.Substring(Status.IndexOf(' '));
+            }
+            else
+            {
+                Status = status;
+            }
             InvokePropertyChanged("Status");
         }
 

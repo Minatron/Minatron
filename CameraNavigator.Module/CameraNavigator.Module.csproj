@@ -44,8 +44,10 @@
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\DLIB\Prism\Desktop\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -62,6 +64,9 @@
     <Compile Include="Module.cs" />
     <Compile Include="Presenter\CameraPresenter.cs" />
     <Compile Include="Presenter\ControllerPresenter.cs" />
+    <Compile Include="View\CamerasReportView.xaml.cs">
+      <DependentUpon>CamerasReportView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CameraView.xaml.cs">
       <DependentUpon>CameraView.xaml</DependentUpon>
     </Compile>
@@ -76,6 +81,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\CamerasReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CameraView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +106,10 @@
     <ProjectReference Include="..\ClientApplication.Infrastructure\ClientApplication.Infrastructure.csproj">
       <Project>{A3735228-28FF-4CCA-9855-2CC64291E11D}</Project>
       <Name>ClientApplication.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LIB\FlowDocuments\FlowDocuments.csproj">
+      <Project>{EF9F9362-97F3-4267-9BE4-07AED5CA3BC0}</Project>
+      <Name>FlowDocuments</Name>
     </ProjectReference>
     <ProjectReference Include="..\LIB\Storage.Core\Storage.Core.csproj">
       <Project>{07832E71-86D8-4666-BC12-970C1C8CA1E1}</Project>

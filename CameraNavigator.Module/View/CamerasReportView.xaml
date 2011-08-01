@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Band.CameraNavigator.Module.View.CamerasReportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:flowdoc="clr-namespace:FlowDocuments;assembly=FlowDocuments" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <FlowDocument ColumnWidth="816" PagePadding="0.5in,20,0.5in,20">
+        <Table>
+            <TableRowGroup>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph TextAlignment="Left" FontFamily="Tahoma" FontSize="10" >
+                            Вес:
+                            <Run Text="{Binding WData.Weigh}"/>тонн
+                        </Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph TextAlignment="Left" FontFamily="Tahoma" FontSize="10" >
+                          Скорость:
+                            <Run Text="{Binding WData.AvgSpeed}"/>км/ч
+                        </Paragraph>
+
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph TextAlignment="Left" FontFamily="Tahoma" FontSize="10" >
+                            Время:
+                            <Run Text="{Binding WData.WeighTime}"/>
+                        </Paragraph>
+
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph TextAlignment="Left" FontFamily="Tahoma" FontSize="10">
+                            Направление:
+                            <Run Text="{Binding WData.Course}"/>
+                        </Paragraph>
+                    </TableCell>
+                </TableRow>
+            </TableRowGroup>
+        </Table>
+        <flowdoc:ItemsContent ItemsSource="{Binding  FreezedImages}" >
+            <flowdoc:ItemsContent.ItemsPanel>
+                <DataTemplate>
+                    <flowdoc:Fragment>
+                        <Section flowdoc:Attached.IsItemsHost="True">
+                        </Section>
+                    </flowdoc:Fragment>
+                </DataTemplate>
+            </flowdoc:ItemsContent.ItemsPanel>
+            <flowdoc:ItemsContent.ItemTemplate>
+                <DataTemplate>
+                    <flowdoc:Fragment>
+                        <Table BorderThickness="1" FontSize="8" FontFamily="Tahoma" BorderBrush="Black">
+                            <TableRowGroup>
+                                <TableRow>
+                                    <TableCell>
+                                        <BlockUIContainer>
+                                            <Border BorderBrush="White"  BorderThickness="2" Margin="5" >
+                                                <Image Source="{Binding CameraImage}"  Stretch="Fill" Width="720" Height="540"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+
+                                                </Image>
+
+                                            </Border>
+                                        </BlockUIContainer>
+                                     </TableCell>
+                                </TableRow>
+                            </TableRowGroup>
+                        </Table>
+
+                    </flowdoc:Fragment>
+                </DataTemplate>
+            </flowdoc:ItemsContent.ItemTemplate>
+        </flowdoc:ItemsContent>
+
+    </FlowDocument>
+</UserControl>

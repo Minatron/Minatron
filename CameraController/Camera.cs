@@ -8,53 +8,58 @@ using System.Threading;
 
 namespace CameraController
 {
-
-  
+    
+    public enum  CameraExceptions
+    {
+        None,
+        EnterToArchiveError,
+        SeekToTimeException,
+        RealTimeEnterException,
+        PlayArchiveException,
+        StopArchiveException,
+        LoadVideoError
+    }
     public class Camera
     {
         public delegate void JPEGReady(byte[] jpeg);
         public delegate void StatusReady(string status);
+        public delegate void CameraExeption(CameraExceptions exception);
         private readonly WebCommander _commander;
         private readonly LoginResult _session;
         private readonly Channel _data;
-       
-
-
         public event JPEGReady OnJPEGReady;
         public event StatusReady OnStatusReady;
-
+        public event CameraExeption OnException;
+        public void InvokeOnException(CameraExceptions exception)
+        {
+            if (IsFreeze) return;
+            CameraExeption handler = OnException;
+            if (handler != null) handler(exception);
+        }
         public void InvokeOnStatusReady(string status)
         {
             StatusReady handler = OnStatusReady;
-            if (handler != null) handler(status);
-           
+            if (handler != null) handler(status);           
         }
-
         public bool InArchiveMode { get; private set; }
-        public bool IsPlaying { get; private set; }
-
+        public bool IsPlaying { get; private set; }  
         public void SetStatus(StatusResult sr)
         {
             if(sr!=null) InvokeOnStatusReady(sr.GetStatus(_data));
         }
-
         public Channel Data
         {
             get { return _data; }
         }
-
         public byte[] CurrentJpeg { get; private set; }
-
         public void InvokeOnJPEGReady(byte[] jpeg)
         {
             if (IsFreeze) return;
             
             CurrentJpeg = jpeg;
             var handler = OnJPEGReady;
-            if (handler != null) handler(jpeg);
-            Trace.WriteLine(Data.Name);
+            if (handler != null) handler(jpeg);;
         }
-
         public Camera(WebCommander commander, LoginResult session, Channel data)
         {
             InArchiveMode = false;
@@ -63,72 +68,59 @@ namespace CameraController
             _data = data;
 
         }
-
-     
-
-
+        private object lockObject = new object();
         private void ShowFrame(object state)
         {
             try
-            {
-                InvokeOnJPEGReady(_commander.GetJPEG(_session, Data));
+            {           
+                byte[] res = null;
+                res = _commander.GetJPEG(_session, Data, lockObject);
+                if (res != null)
+                {
+                    InvokeOnException(CameraExceptions.None);
+                    InvokeOnJPEGReady(res);
+                }
+                else
+                {
+                    InvokeOnException(CameraExceptions.LoadVideoError);   
+                }                
             }
             catch (Exception ex)
             {
-                               
+                            
             }
         }
         public bool ToArchiveUnFreeze(DateTime time)
         {
-            if (_currentFrameTime == time) return false;
             UnFreeze();
             try
             {
-                StopPlay();
-                if (!InArchiveMode)
-                {
-                    var enterResult = _commander.ArchiveEnter(_session, Data, true);
-
-                    if (enterResult.Result <= 0) throw new Exception();
-                }
-                _currentFrameTime = time;
+                InvokeOnException(CameraExceptions.None);             
+                var enterResult = _commander.ArchiveEnter(_session, Data, false);
+                enterResult = _commander.ArchiveEnter(_session, Data, true);
+                if (enterResult.Result <= 0 && !InArchiveMode) throw new Exception();                
                 var seekResult = _commander.ArchiveSeek(_session, Data, time);
                 if (seekResult.Result <= 0) throw new Exception();
-                ThreadPool.QueueUserWorkItem(ShowFrame);
                 InArchiveMode = true;
+                StartPlay();
             }
             catch (Exception)
             {
+                InvokeOnException(CameraExceptions.EnterToArchiveError);
                 return false;
             }
             return true;
         }
-
-        public bool ToArchive(DateTime time)
+        public void Update()
         {
-          
-            if (IsFreeze) return false;
-            try
-            {
-                StopPlay();
-                _currentFrameTime = time;
-                var seekResult = _commander.ArchiveSeek(_session, Data, time);
-                if (seekResult.Result <= 0) throw new Exception();
-                ThreadPool.QueueUserWorkItem(ShowFrame);
-                InArchiveMode = true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
+            ThreadPool.QueueUserWorkItem(ShowFrame);
         }
-
         public bool ToRealTime()
         {
             if (IsFreeze) return false;
             try
             {
+                InvokeOnException(CameraExceptions.None);
                 if (InArchiveMode)
                 {
                     var enterResult = _commander.ArchiveEnter(_session, Data, false);
@@ -139,107 +131,36 @@ namespace CameraController
             }
             catch (Exception)
             {
-
+                InvokeOnException(CameraExceptions.RealTimeEnterException);
                 return false;
             }
             return true;
         }
-
-        public bool PlayArchive()
-        {
-            if (IsFreeze) return false;
-            if (!InArchiveMode) return false;
-            try
-            {
-                var res  = _commander.ArchivePlay(_session, Data);
-                if (res.Result<=0) throw new Exception();
-                StartPlay();
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public bool StopPlayArchive()
-        {
-            if (IsFreeze) return false;
-            if (!InArchiveMode) return false;
-            try
-            {
-                var res = _commander.ArchiveStop(_session, Data);
-                if (res.Result <= 0) throw new Exception();
-                StopPlay();
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public void ArchiveNextFrame()
-        {
-            if (IsFreeze) return;
-            if (!InArchiveMode) return;
-            StopPlay();
-            ThreadPool.QueueUserWorkItem(ShowFrame);
-        }
-
-        public void ArchivePrevFrame()
-        {
-            if (IsFreeze) return;
-            if (!InArchiveMode) return;
-            StopPlay();
-            ThreadPool.QueueUserWorkItem(ShowFrame);           
-        }
-
         private bool _stop = false;
-        private object _lockObject = new object();
-        private DateTime _currentFrameTime = DateTime.Now;
-
-       
         private void GetFrameProc(object state)
         {
-           // lock (_lockObject)
-         //   {
-                _stop = false;
-                IsPlaying = true;
-                while (!_stop)
-                {
-                    ShowFrame(null);
-                }
-                IsPlaying = false;
-          //  }
-            
+            _stop = false;
+            IsPlaying = true;
+            while (!_stop)
+            {
+                ShowFrame(null);
+            }
+            IsPlaying = false;
         }
-
-
         private void StartPlay()
         {
-
             ThreadPool.QueueUserWorkItem(GetFrameProc);
-            
         }
 
         public void StopPlay()
         {
             _stop = true;
-            //lock (_lockObject)
-            //{
-                
-            //}
            
         }
-
         public bool IsFreeze { get; private set; }
-
         public void Freeze()
         {
             if( !InArchiveMode) return;
-            StopPlay();
-            //StopPlayArchive();
             IsFreeze = true;
         }
         public void UnFreeze()

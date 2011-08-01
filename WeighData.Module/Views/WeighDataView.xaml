@@ -67,7 +67,7 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"  VerticalAlignment="Center" Text="{Binding Course}"/>
-                            <TextBlock Grid.Column="1"  VerticalAlignment="Center" Text="{Binding WeighTime, Converter={x:Static conv:ToLocalTime.ToString}}"/>
+                            <TextBlock Grid.Column="1"  VerticalAlignment="Center" Text="{Binding WeighTime}"/>
                             <TextBlock Grid.Column="2"  VerticalAlignment="Center" Text="{Binding Weigh, StringFormat='\{0\}т'}"/>
                             <TextBlock Grid.Column="3"  VerticalAlignment="Center" Text="{Binding AvgSpeed, StringFormat='\{0\}км/ч'}"/>
 

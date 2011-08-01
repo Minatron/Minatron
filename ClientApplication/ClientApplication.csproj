@@ -133,7 +133,17 @@
       <Name>WPF.Patterns</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="a4w195">
+      <Guid>{B8D7BAE1-093B-11CF-85AA-00608CF6711A}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Languages\RU.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

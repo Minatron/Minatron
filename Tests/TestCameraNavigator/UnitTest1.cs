@@ -27,7 +27,7 @@ namespace TestCameraNavigator
             Assert.IsTrue(archiveEnter.Result > 0);
             var archiveSeek = commnader.ArchiveSeek( res, channel, new DateTime(2011, 07, 23, 1, 0, 0));
             Assert.IsTrue(archiveSeek.Result > 0);
-            var jpeg = commnader.GetJPEG( res, channel);
+            var jpeg = commnader.GetJPEG( res, channel,new object());
         }
     }
 }
