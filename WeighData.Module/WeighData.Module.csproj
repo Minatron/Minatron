@@ -66,6 +66,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Module.cs" />
+    <Compile Include="OLD\CourseFilterPresenter.cs" />
+    <Compile Include="OLD\FilterManagerBase.cs" />
+    <Compile Include="OLD\FilterPresenter.cs" />
+    <Compile Include="OLD\FiltersManagerPresenter.cs" />
+    <Compile Include="OLD\ICollectionFiltersManager.cs" />
+    <Compile Include="OLD\IFilterManager.cs" />
+    <Compile Include="OLD\WeightFilterPresenter.cs" />
+    <Compile Include="OLD\WeightTimeFilterPresenter.cs" />
     <Compile Include="Presenters\PageInfoPresenter.cs" />
     <Compile Include="Presenters\WeighDataCamerasPresenter.cs" />
     <Compile Include="Presenters\WeighDataPresenter.cs" />
@@ -86,6 +94,26 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\Filters\CourseFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Filters\DatePickerWithoutText.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Filters\FiltersManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Filters\WeightFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Filters\WeightTimeFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\WeighDataCamerasView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +144,21 @@
   <ItemGroup>
     <Resource Include="..\Resources\Images\back.png">
       <Link>Views\back.png</Link>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\Resources\Images\minus.png">
+      <Link>Views\minus.png</Link>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\Resources\Images\calendar.png">
+      <Link>Views\calendar.png</Link>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\Resources\Images\filter.png">
+      <Link>Views\filter.png</Link>
     </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
