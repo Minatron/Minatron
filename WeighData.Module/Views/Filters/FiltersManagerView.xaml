@@ -15,7 +15,7 @@
         <ItemsControl Grid.Row="1" ItemsSource="{Binding RegisteredFilters}" HorizontalContentAlignment="Stretch" Visibility="{Binding Path=HasActiveFilters, Converter={x:Static conv:False.ToCollapsed}}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border Margin="3" Padding="3" CornerRadius="2" BorderBrush="Gray" BorderThickness="1" Visibility="{Binding IsActive, Converter={x:Static conv:False.ToCollapsed}}">
+                    <Border Margin="3" Padding="3" CornerRadius="2" BorderBrush="Gray" BorderThickness="1" Background="#FFAAAAAA" Visibility="{Binding IsActive, Converter={x:Static conv:False.ToCollapsed}}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" MinWidth="200"/>
@@ -25,7 +25,7 @@
                             <Menu Grid.Column="1" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="-5,0,-5,0">
                                 <MenuItem Command="{Binding RemoveCommand}" >
                                     <MenuItem.Header>
-                                        <Image Source="minus.png" Width="16" />
+                                        <Image Source="..\minus.png" Width="16" />
                                     </MenuItem.Header>
                                 </MenuItem>
                             </Menu>

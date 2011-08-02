@@ -24,7 +24,7 @@ namespace Band.OLD
 		{
 			get
 			{
-                return @"Вес";
+                return @"Направление";
 			}
 		}
 

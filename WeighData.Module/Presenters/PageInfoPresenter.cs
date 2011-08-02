@@ -4,7 +4,7 @@ namespace Band.Module.WeighData.Presenters
 {
     public class PageInfoPresenter : INotifyPropertyChanged
     {
-        public const int CAPACITY = 9;
+        public const int CAPACITY = 30;
 
         int _index = 0;
 

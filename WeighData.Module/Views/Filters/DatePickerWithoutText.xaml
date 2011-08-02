@@ -48,7 +48,7 @@
                             </Grid.RowDefinitions>
                             <Border x:Name="Highlight" BorderBrush="#FF404040" BorderThickness="1" Grid.ColumnSpan="4" CornerRadius="1" Margin="-1" Opacity="0" Grid.Row="0" Grid.RowSpan="4"/>
                             <Border x:Name="Background" Background="Transparent" Grid.ColumnSpan="4" CornerRadius=".5" Opacity="1" Grid.Row="0" Grid.RowSpan="4">
-                                <Image Source="calendar.png" Width="16"/>
+                                <Image Source="..\calendar.png" Width="16"/>
                             </Border>
 
                         </Grid>
