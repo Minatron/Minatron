@@ -13,7 +13,7 @@ namespace Band.Storage.Minatron.Mapping
                .GeneratedBy.Identity();
 
             Map(x => x.Course, "CourseID")
-               .CustomType<int>()
+               .CustomType<CourseType>()
                .Not.Nullable();
 
             Map(x => x.WeighTime, "WeighTime")

@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Threading;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 using Band.Client.Infrastructure;
 using Band.Client.Infrastructure.Events;
 using Band.Client.Infrastructure.Storage;
+using Band.OLD;
 using Band.Storage;
 using Band.Storage.Minatron;
 using Microsoft.Practices.Composite.Events;
@@ -23,6 +22,7 @@ namespace Band.Module.WeighData.Presenters
 
         WeighDataRepository _repository;
 
+        public FiltersManagerPresenter FilterManager { get; protected set; }
         public PageInfoPresenter Page { get; private set; }
 
         public ICommand ShowCameraNavigatorCommand { get; protected set; }
@@ -30,11 +30,12 @@ namespace Band.Module.WeighData.Presenters
         public ICommand PrevPageCommand { get; protected set; }
         public ICommand RefreshCommand { get; protected set; }
 
-        public WeighDataPresenter(IUnityContainer container,StorageService storage)
+        public WeighDataPresenter(IUnityContainer container, StorageService storage, FiltersManagerPresenter filterManager)
         {
             Page = new PageInfoPresenter();
             _container = container;
             _storage = storage;
+            FilterManager = filterManager;
 
             ShowCameraNavigatorCommand = new DelegateCommand<Weigh>(ShowCameraNavigator);
             RefreshCommand = new DelegateCommand<object>(Refresh);
@@ -68,12 +69,18 @@ namespace Band.Module.WeighData.Presenters
         {
             get
             {
-                List<IStorageFilter> filters = new List<IStorageFilter>();
+                if (FilterManager.WasChanged)
+			    {
+				    Page.Index = 0;
+			    }
+                var additionalFilters = FilterManager.RecreateActiveFilters();
+                var filters = new List<IStorageFilter>(additionalFilters);
                 filters.Add(new PagingFilter(PageInfoPresenter.CAPACITY, Page.Index));
                 filters.Add(new SortFilter("WeighTime" , SortFilter.Orders.DESC));
                 return filters;
             }
         }
+
         public IList<Weigh> Objects
         {
             get

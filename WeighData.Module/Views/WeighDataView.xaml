@@ -5,6 +5,9 @@
              xmlns:lang="clr-namespace:Band.WPF.Localization;assembly=WPF.Patterns" 
 	         xmlns:conv="clr-namespace:Band.WPF.Convertors;assembly=WPF.Patterns"
              >
+    <UserControl.Resources>
+        <ResourceDictionary Source="Filters\FiltersManagerView.xaml"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,16 +17,42 @@
 
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Foreground="White" Text="Нажмите обновить после изменения фильтров" VerticalAlignment="Center" Visibility="{Binding FilterManager.WasChanged, Converter={x:Static conv:False.ToCollapsed}}"/>
+                <TextBlock Foreground="White" FontFamily="Courier New" Text=" ►" VerticalAlignment="Center" FontSize="14" Visibility="{Binding FilterManager.WasChanged, Converter={x:Static conv:False.ToCollapsed}}"/>
                 <Menu HorizontalAlignment="Right" Background="Transparent">
+                    <Menu.Resources>
+                        <ResourceDictionary>
+                            <Style BasedOn="{StaticResource {x:Type MenuItem}}" TargetType="{x:Type MenuItem}" x:Key="MenuItemStyle"/>
+                        </ResourceDictionary>
+                    </Menu.Resources>
                     <MenuItem Command="{Binding RefreshCommand}">
                         <MenuItem.Header>
                             <Image Source="refresh.png" Width="16" />
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem x:Name="addFilterButton" DataContext="{Binding FilterManager}"  Command="{Binding AddCommand}" ItemsSource="{Binding NotUsedFilters}" 
+							  Visibility="{Binding Path=HasNotActiveFilters, Converter={x:Static conv:False.ToCollapsed}}">
+                        <MenuItem.ItemContainerStyle>
+                            <Style BasedOn="{StaticResource MenuItemStyle}" TargetType="{x:Type MenuItem}">
+                                <Setter Property="MenuItem.Command" Value="{Binding DataContext.AddCommand, ElementName=addFilterButton}"/>
+                                <Setter Property="MenuItem.CommandParameter" Value="{Binding}"/>
+                            </Style>
+                        </MenuItem.ItemContainerStyle>
+                        <MenuItem.ItemTemplate>
+                            <DataTemplate>
+                                <MenuItem Command="{Binding DataContext.AddCommand, ElementName=addFilterButton}" CommandParameter="{Binding}" Header="{Binding Name}" MinWidth="100"/>
+                            </DataTemplate>
+                        </MenuItem.ItemTemplate>
+                        <MenuItem.Header>
+                            <Image Source="filter.png" Width="16" />
                         </MenuItem.Header>
                     </MenuItem>
                 </Menu>
             </StackPanel>
         </Grid>
 
+        <ContentControl Grid.Row="1" Content="{Binding FilterManager}"/>
+        
         <TextBlock Grid.Row="2" Text="Пусто" HorizontalAlignment="Center" VerticalAlignment="Center"
 						    Visibility="{Binding Page.IsEmpty, Converter={x:Static conv:False.ToCollapsed}}"/>
         <Grid Grid.Row="2" Visibility="{Binding  Page.IsEmpty, Converter={x:Static conv:True.ToCollapsed}}">

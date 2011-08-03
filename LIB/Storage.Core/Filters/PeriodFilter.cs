@@ -6,30 +6,30 @@ namespace Band.Storage.Filters
 {
     public abstract class PeriodFilter : IStorageFilter
     {
-        DateTime m_startTime;
-        DateTime m_endTime;
+        DateTime? _startTime;
+        DateTime? _endTime;
 
-        protected String m_startFieldName;
-        protected String m_endFieldName;
+        protected String _startFieldName;
+        protected String _endFieldName;
 
         public ICriteria AddCriteria(ICriteria criteria)
         {
             ICriteria res = criteria;
-            if (m_startTime != DateTime.MinValue)
+            if (_startTime.HasValue)
             {
-                res = res.Add(Restrictions.Ge(m_endFieldName, m_startTime));
+                res = res.Add(Restrictions.Ge(_endFieldName, _startTime.Value));
             }
-            if (m_endTime != DateTime.MaxValue)
+            if (_endTime.HasValue)
             {
-                res = res.Add(Restrictions.Le(m_startFieldName, m_endTime));
+                res = res.Add(Restrictions.Le(_startFieldName, _endTime.Value));
             }
             return res;
         }
 
         public PeriodFilter(DateTime? start = null, DateTime? end = null)
         {
-            m_startTime = start ?? DateTime.MinValue;
-            m_endTime = end ?? DateTime.MaxValue;
+            _startTime = start;
+            _endTime = end;
         }
     }
 }

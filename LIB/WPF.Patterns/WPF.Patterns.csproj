@@ -52,6 +52,7 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\RoutedEventTrigger.cs" />
     <Compile Include="Commands\SimpleCommand.cs" />
+    <Compile Include="Controls\DateTimePicker.cs" />
     <Compile Include="Convertors\DateTimeToStringConverter.cs" />
     <Compile Include="Convertors\FromBoolean\FromBoolean.cs" />
     <Compile Include="Convertors\FromBoolean\ToVisibility.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Convertors\FromTimeSpan\FromTimeSpan.cs" />
     <Compile Include="Convertors\FromTimeSpan\ToString.cs" />
     <Compile Include="Commands\ExecutionStrategy.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Localization\Lang.cs" />
     <Compile Include="Localization\Title.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
