@@ -71,6 +71,7 @@ namespace Band.Client.Infrastructure.Properties {
       <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
         <string>5e73972f-3b78-4c96-b1fb-8e97632bea2e</string>
         <string>ac998b73-38d5-4cdd-bf4a-1d6ca9dce859</string>
+        <string>2ab41057-922d-4a36-831f-3ebca85a449d</string>
         <string>5cdec79f-6552-4e11-995d-1c0736513ecf</string>
       </ArrayOfString>
     </value>

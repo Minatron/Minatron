@@ -136,7 +136,7 @@ namespace CameraController
             return cr != null ? new StatusResult(cr) : null;
         }
         private object _lo = new object();
-        public byte[] GetJPEG( LoginResult lr, Channel channel, object lockObject)
+        public byte[] GetJPEG( LoginResult lr, Channel channel, object lockObject,int cadrNumber)
         {
             byte[] res = null;
             lock (lockObject)
@@ -145,7 +145,7 @@ namespace CameraController
                     {
                         res =
                             SendCommand(_videoServer + "/jpeg/" + channel.Address + "/u?id=" + lr.SessionId + "/" +
-                                        channel.Id + "&t=" + TimeMarker());
+                                        channel.Id + "&t=" + cadrNumber + TimeMarker());
                     }
                     catch (Exception)
                     {

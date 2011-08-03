@@ -69,12 +69,14 @@ namespace CameraController
 
         }
         private object lockObject = new object();
+        private int cadrNumber = 1;
         private void ShowFrame(object state)
         {
             try
             {           
                 byte[] res = null;
-                res = _commander.GetJPEG(_session, Data, lockObject);
+                res = _commander.GetJPEG(_session, Data, lockObject,cadrNumber);
+                cadrNumber++;
                 if (res != null)
                 {
                     InvokeOnException(CameraExceptions.None);
@@ -96,8 +98,8 @@ namespace CameraController
             try
             {
                 InvokeOnException(CameraExceptions.None);             
-                var enterResult = _commander.ArchiveEnter(_session, Data, false);
-                enterResult = _commander.ArchiveEnter(_session, Data, true);
+               _commander.ArchiveEnter(_session, Data, false);
+                var enterResult = _commander.ArchiveEnter(_session, Data, true);
                 if (enterResult.Result <= 0 && !InArchiveMode) throw new Exception();                
                 var seekResult = _commander.ArchiveSeek(_session, Data, time);
                 if (seekResult.Result <= 0) throw new Exception();
@@ -139,12 +141,15 @@ namespace CameraController
         private bool _stop = false;
         private void GetFrameProc(object state)
         {
+          
             _stop = false;
             IsPlaying = true;
             while (!_stop)
             {
                 ShowFrame(null);
+                Thread.Sleep(100);
             }
+            cadrNumber = 1;
             IsPlaying = false;
         }
         private void StartPlay()

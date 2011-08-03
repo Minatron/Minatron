@@ -24,15 +24,20 @@
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
                 <ItemsControl ItemsSource="{Binding ControllerCameras}" Grid.Row="0">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel IsItemsHost="True"  HorizontalAlignment="Stretch" VerticalAlignment="Top">
-
-                            </WrapPanel>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-
-                </ItemsControl>
+                    
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <ContentControl Content="{Binding Camera1}" Grid.Column="0"/>
+                            <ContentControl Content="{Binding Camera2}" Grid.Column="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
             <ContentControl Content="{Binding}">
                 <ContentControl.ContentTemplate>
                     <DataTemplate>

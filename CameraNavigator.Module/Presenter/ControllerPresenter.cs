@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.IO.Packaging;
+using System.Linq;
 using System.Printing;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -18,6 +19,13 @@ using Microsoft.Practices.Composite.Presentation.Events;
 
 namespace Band.CameraNavigator.Module.Presenter
 {
+
+    public class DoubleCamera
+    {
+        public CameraPresenter Camera1 { get; set; }
+        public CameraPresenter Camera2 { get; set; }
+
+    }
     public class ControllerPresenter : INotifyPropertyChanged 
     {
         private readonly Controller _controller;
@@ -84,7 +92,11 @@ namespace Band.CameraNavigator.Module.Presenter
         {
             get
             {
-                return ControllerCameras != null ? ControllerCameras.FindAll(each => each.Camera.IsFreeze) : null;
+                return _allCamerasPresenter == null
+                           ? null
+                           : _allCamerasPresenter.FindAll(
+                               each =>
+                               _controller.CurrentDirectionCameras.Exists(res => each.Camera == res && each.IsFreeze));
             }
         }
 
@@ -156,13 +168,33 @@ namespace Band.CameraNavigator.Module.Presenter
         private List<CameraPresenter> _allCamerasPresenter;
         private int _count;
 
-        public List<CameraPresenter> ControllerCameras
+
+        
+
+        public List<DoubleCamera> ControllerCameras
         {
             get
             {
                 if (_allCamerasPresenter == null && _controller.Cameras.Count>0)
                     _allCamerasPresenter = _controller.Cameras.ConvertAll(each => new CameraPresenter(each,_eventAgrigator));
-                return _allCamerasPresenter == null ? null : _allCamerasPresenter.FindAll(each => _controller.CurrentDirectionCameras.Exists(res=>each.Camera==res));
+                var c = _controller.CurrentDirectionCameras.Select(camera => _allCamerasPresenter.Find(each => each.Camera == camera)).Where(f => f != null).ToList();
+
+
+                var ret = new List<DoubleCamera>();
+                  var i = 0;
+                    while (i < c.Count)
+                    {
+                        var dc = new DoubleCamera();
+                        dc.Camera1 = c[i];
+                        i++;
+                        if (i < c.Count) { dc.Camera2 = c[i];
+                            i++;
+                            
+                        }
+                        ret.Add(dc);
+                    }
+                
+                return ret;
             }
         }
 

@@ -17,6 +17,8 @@ namespace CameraController
         FramePrevException,
         SeekException
     }
+
+   
     public class Controller
     {
         public delegate void ControllerException(ControllerExceptions ex);
@@ -227,10 +229,9 @@ namespace CameraController
             {
                 try
                 {
-                    if (IsRealMode) return Cameras;
-                    return
-                        Cameras.FindAll(
-                            each => _configurator.GetCamerasForDirection(_dir).Exists(str => str == each.Data.Id));
+                    var ret = IsRealMode ? Cameras : _configurator.GetCamerasForDirection(_dir).Select(currentDirectionCamera => Cameras.Find(each => currentDirectionCamera == each.Data.Id)).Where(cam => cam != null).ToList();
+                    
+                    return ret;
                 }
                 catch (Exception)
                 {
