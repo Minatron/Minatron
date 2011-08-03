@@ -13,7 +13,7 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Border BorderBrush="White"  BorderThickness="2" Margin="3" x:Name="Border1">
-                        <Image Source="{Binding CameraImage}"  Stretch="Fill" Width="320" Height="240"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                        <Image Source="{Binding CameraImage}"  Stretch="Fill"  Height="300"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
                             <local:CommandBehaviorCollection.Behaviors>
                                 <local:BehaviorBinding Event="MouseLeftButtonDown" Command="{Binding FreezeCamera}" />
                             </local:CommandBehaviorCollection.Behaviors>
@@ -21,7 +21,7 @@
 
                     </Border>
                     <TextBlock x:Name="Error"   Foreground="White" Background="Red" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
-                    <TextBlock Text="{Binding CameraName}"  Margin="10,5,0,0" Width="320" Height="20" Foreground="White" VerticalAlignment="Top"/>
+                    <TextBlock Text="{Binding CameraName}"  Margin="10,5,0,0"  Height="20" Foreground="White" VerticalAlignment="Top"/>
                     <TextBlock Text="{Binding Status}" Grid.Row="1"  x:Name="Status" TextAlignment="Center" />
                 </Grid>
                 <DataTemplate.Triggers>

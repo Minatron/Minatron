@@ -91,7 +91,7 @@
                                     <TableCell>
                                         <BlockUIContainer>
                                             <Border BorderBrush="White"  BorderThickness="2" Margin="5" >
-                                                <Image Source="{Binding CameraImage}"  Stretch="Fill" Width="640" Height="480"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                                                <Image Source="{Binding CameraImage}"  Stretch="Fill" Width="533" Height="400"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
 
                                                 </Image>
 

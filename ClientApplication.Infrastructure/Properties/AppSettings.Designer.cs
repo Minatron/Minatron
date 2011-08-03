@@ -69,11 +69,9 @@ namespace Band.Client.Infrastructure.Properties {
     </key>
     <value>
       <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-        <string>5e73972f-3b78-4c96-b1fb-8e97632bea2e</string>
-        <string>ac998b73-38d5-4cdd-bf4a-1d6ca9dce859</string>
-        <string>2ab41057-922d-4a36-831f-3ebca85a449d</string>
-        <string>5cdec79f-6552-4e11-995d-1c0736513ecf</string>
-      </ArrayOfString>
+        <string>9f19e4c4-2d7b-463a-82e7-977cd5cb8300</string>
+        <string>5c4b35c7-97f6-4bb5-b90f-a96aebb12b23</string>
+         </ArrayOfString>
     </value>
   </item>
   <item>
@@ -82,9 +80,9 @@ namespace Band.Client.Infrastructure.Properties {
     </key>
     <value>
       <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-             <string>ef4fc01e-a8f3-474b-b9fb-7ebc81c5364d</string>
-             <string>e5b86eb0-07a8-4d57-b2a2-1321ab981955</string>
-             <string>b3d506ab-4a7e-4a9b-a47d-0eb87b6cbf98</string>
+              <string>9f19e4c4-2d7b-463a-82e7-977cd5cb8300</string>
+        <string>5c4b35c7-97f6-4bb5-b90f-a96aebb12b23</string>
+
       </ArrayOfString>
     </value>
   </item>
@@ -100,7 +98,7 @@ namespace Band.Client.Infrastructure.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://ns.e105.ru:3082")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://62.113.49.111:8080")]
         public string TServer {
             get {
                 return ((string)(this["TServer"]));
@@ -112,7 +110,7 @@ namespace Band.Client.Infrastructure.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://ns.e105.ru:3084")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://62.113.49.111:3084")]
         public string TVideoServer {
             get {
                 return ((string)(this["TVideoServer"]));
