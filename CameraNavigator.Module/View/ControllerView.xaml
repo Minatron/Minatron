@@ -100,42 +100,22 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                 
-                    <StackPanel Orientation="Horizontal" Height="60" VerticalAlignment="Center"  HorizontalAlignment="Center" >
+                    <StackPanel Orientation="Horizontal" Height="64" VerticalAlignment="Center"  HorizontalAlignment="Center" >
                         <Button  Command="{Binding FramePrev}">
-                            <Image >
-                                <Image.Source>
-                                    <BitmapImage  UriSource="Images/control-double-180.png"/>
-                                </Image.Source>
-                            </Image>
+                        <Image Margin="10" Source="Images/control-double-180.png"/>
                         </Button>
                         <Button  Command="{Binding ToStartTime}">
-                            <Image>
-                                <Image.Source>
-                                    <BitmapImage  UriSource="Images/control-cursor.png"/>
-                                </Image.Source>
-                            </Image>
+                        <Image Margin="10" Source="Images/control-cursor.png"/>
                         </Button>
                         <ToggleButton  Command="{Binding Play}" IsChecked="{Binding IsPlayingArchive, Mode=OneWay}">
-                            <Image >
-                                <Image.Source>
-                                    <BitmapImage  UriSource="Images/Control.png"/>
-                                </Image.Source>
-                            </Image>
+                        <Image Margin="8" Source="Images/Control.png" />
                         </ToggleButton>
                        
                         <ToggleButton Command="{Binding Stop}" IsChecked="{Binding IsStopPlayingArchive, Mode=OneWay}">
-                            <Image >
-                                <Image.Source>
-                                    <BitmapImage  UriSource="Images/control-pause.png"/>
-                                </Image.Source>
-                            </Image>
+                        <Image Margin="3" Source="Images/control-pause.png"/>
                         </ToggleButton>
                         <Button  Command="{Binding FrameNext}">
-                            <Image >
-                                <Image.Source>
-                                    <BitmapImage  UriSource="Images/control-double.png"/>
-                                </Image.Source>
-                            </Image>
+                        <Image Margin="10" Source="Images/control-double.png"/>
                         </Button>
                     </StackPanel>
                
