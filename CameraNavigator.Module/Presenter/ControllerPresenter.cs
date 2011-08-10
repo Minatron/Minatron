@@ -37,6 +37,7 @@ namespace Band.CameraNavigator.Module.Presenter
             _eventAgrigator = eventAgrigator;
             _eventAgrigator.GetEvent<ShowMovieForWeightDataEvent>().Subscribe(ProcessWeightData,ThreadOption.UIThread,true);
             _eventAgrigator.GetEvent<FreezeEvent>().Subscribe(e => UpdateReport());
+            _eventAgrigator.GetEvent<BackButtonPushEvent>().Subscribe(BackButtonPushEventInvoke, ThreadOption.UIThread, true);
             Play = new DelegateCommand(PlayInvoke,()=>controller.IsLogin);
             ToStartTime = new DelegateCommand<object>(ToStartInvoke, e => controller.IsLogin);
             Stop = new DelegateCommand(StopInvoke, () => controller.IsLogin);
@@ -45,6 +46,13 @@ namespace Band.CameraNavigator.Module.Presenter
             //_count = ControllerCameras.Count;
             InvokePropertyChanged("ControllerCameras");
         }
+
+        private void BackButtonPushEventInvoke(object obj)
+        {
+            _controller.CloseCurrentCameras();
+        }
+
+      
 
         void _controller_OnException(ControllerExceptions ex)
         {

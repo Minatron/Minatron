@@ -118,6 +118,7 @@ namespace CameraController
             {
                 InvokeOnException(ControllerExceptions.SeekException);
             }
+            CurrentDirectionCameras.ForEach(camera => camera.Update());
           
         }
         private bool _stopGetStatus = true;
@@ -166,6 +167,7 @@ namespace CameraController
             {
                 InvokeOnException(ControllerExceptions.PlayException);
             }
+            CurrentDirectionCameras.ForEach(camera => camera.StartPlay());
         }
         public void StopPlayArchive()
         {
@@ -183,6 +185,7 @@ namespace CameraController
             {
                 InvokeOnException(ControllerExceptions.StopException);
             }
+            CurrentDirectionCameras.ForEach(camera => camera.StopPlay());
           
         }
         public void NextFrameArchive()
@@ -250,6 +253,11 @@ namespace CameraController
         public List<Camera> Cameras
         {
             get { return _cameras; }
+        }
+
+        public void CloseCurrentCameras()
+        {
+            SetToRealTime();
         }
     }
 }

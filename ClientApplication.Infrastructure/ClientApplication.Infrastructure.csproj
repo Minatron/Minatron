@@ -53,6 +53,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\BackButtonPushEvent.cs" />
     <Compile Include="Events\DisconnectEvent.cs" />
     <Compile Include="Events\FreezeEvent.cs" />
     <Compile Include="Events\ShowMovieForWeightDataEvent.cs" />

@@ -47,13 +47,13 @@
                     <TableCell >
                         <Paragraph TextAlignment="Left" FontFamily="Tahoma" FontSize="10" >
                             Вес:
-                            <Run Text="{Binding WData.Weigh}"/>тонн
+                            <Run Text="{Binding WData.Weigh, StringFormat='F3'}"/>тонн
                         </Paragraph>
                     </TableCell>
                     <TableCell>
                         <Paragraph TextAlignment="Left" FontFamily="Tahoma" FontSize="10" >
                           Скорость:
-                            <Run Text="{Binding WData.AvgSpeed}"/>км/ч
+                            <Run Text="{Binding WData.AvgSpeed, StringFormat='F2'}"/>км/ч
                         </Paragraph>
 
                     </TableCell>
@@ -65,10 +65,24 @@
 
                     </TableCell>
                     <TableCell>
-                        <Paragraph TextAlignment="Left" FontFamily="Tahoma" FontSize="10">
-                            Направление:
-                            <Run Text="{Binding WData.Course}"/>
-                        </Paragraph>
+                        
+                        <BlockUIContainer>
+                            <ContentControl Content="{Binding WData}">
+                                <ContentControl.ContentTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock TextAlignment="Left" FontFamily="Tahoma" FontSize="10">Направление:</TextBlock>
+                                            <TextBlock x:Name="Course" Margin="5,0,0,0" TextAlignment="Left" FontFamily="Tahoma" FontSize="10" Text="Санкт-Петербург"></TextBlock>
+                                        </StackPanel>
+                                        <DataTemplate.Triggers>
+                                            <DataTrigger Binding="{Binding Course}" Value="Moscow" >
+                                                <Setter TargetName="Course"  Property="Text" Value="Москва" />
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </ContentControl.ContentTemplate>
+                            </ContentControl>
+                            </BlockUIContainer>                  
                     </TableCell>
                 </TableRow>
             </TableRowGroup>

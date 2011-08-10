@@ -98,13 +98,12 @@ namespace CameraController
             try
             {
                 InvokeOnException(CameraExceptions.None);             
-               _commander.ArchiveEnter(_session, Data, false);
                 var enterResult = _commander.ArchiveEnter(_session, Data, true);
                 if (enterResult.Result <= 0 && !InArchiveMode) throw new Exception();                
                 var seekResult = _commander.ArchiveSeek(_session, Data, time);
                 if (seekResult.Result <= 0) throw new Exception();
                 InArchiveMode = true;
-                StartPlay();
+                
             }
             catch (Exception)
             {
@@ -128,7 +127,7 @@ namespace CameraController
                     var enterResult = _commander.ArchiveEnter(_session, Data, false);
                     if (enterResult.Result <= 0) throw new Exception();
                 }
-                StartPlay();
+                StopPlay();
                 InArchiveMode = false;
             }
             catch (Exception)
@@ -152,11 +151,10 @@ namespace CameraController
             cadrNumber = 1;
             IsPlaying = false;
         }
-        private void StartPlay()
+        public void StartPlay()
         {
             ThreadPool.QueueUserWorkItem(GetFrameProc);
         }
-
         public void StopPlay()
         {
             _stop = true;

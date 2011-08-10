@@ -52,7 +52,7 @@ namespace Band.WeightData.Terminal
                 try
                 {
                     size = _stream.Read(_buffer, 0, (size > BUFFERSIZE) ? BUFFERSIZE : size);
-                    return Encoding.ASCII.GetString(_buffer, 0, size).Split(new string[] { "\r\n", "\n",")" }, StringSplitOptions.RemoveEmptyEntries);
+                    return Encoding.ASCII.GetString(_buffer, 0, size).Split(new string[] { "\r\n", "\n", ")" }, StringSplitOptions.RemoveEmptyEntries);
                 }
                 catch  {}
             }
@@ -81,9 +81,9 @@ namespace Band.WeightData.Terminal
                 {
                     foreach (string packet in pakets)
                     {
-                        db.Store(packet);
+                        db.Store(packet.Trim());
                     }
-                    terminal.Write("Connection ok\r\n");
+                    terminal.Write("Connection OK\r\n");
                     break;
                 }
                 Thread.Sleep(100);
