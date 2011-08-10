@@ -1,4 +1,5 @@
-﻿using Band.WindowsLogger;
+﻿using System.Threading;
+using Band.WindowsLogger;
 using System;
 using System.Text;
 
@@ -68,7 +69,7 @@ namespace Band.WeightData.Terminal
                     _log.WriteErrorMessage(id, message);
                     break;
                 case EventID.StoreData:
-                    _log.WriteMessage(id,string.Format("Получен пакет {0}", message));
+                    _log.WriteMessage(id,string.Format("(T{1})Получен пакет {0}", message,Thread.CurrentThread.ManagedThreadId));
                     break;
                 case EventID.ErrorData:
                     _log.WriteMessage(id, string.Format("Неверный формат пакета {0}", message));

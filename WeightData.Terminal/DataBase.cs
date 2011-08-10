@@ -47,8 +47,12 @@ namespace Band.WeightData.Terminal
                 DateTime d = DateTime.Parse(param[0]);
 
                 _insert.Parameters["@time"].Value = (d > DateTime.Now)?d.AddDays(-1):d;
-                _insert.Parameters["@weight"].Value = float.Parse(param[2], new CultureInfo("en-US"));
-                _insert.Parameters["@speed"].Value = float.Parse(param[4], new CultureInfo("en-US"));
+                var culture = new CultureInfo("ru-RU");
+
+                var weight = float.Parse(param[2], culture);
+                var speed = float.Parse(param[4], culture);
+                _insert.Parameters["@weight"].Value = (weight < 0)? weight * (-1.0):weight;
+                _insert.Parameters["@speed"].Value = (speed < 0) ? speed * (-1.0) : speed;
                 Logger.WriteMessage(Logger.EventID.StoreData, packet);
             }
             catch 

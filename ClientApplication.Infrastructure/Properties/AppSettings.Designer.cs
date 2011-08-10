@@ -61,6 +61,54 @@ namespace Band.Client.Infrastructure.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://ns.e105.ru:3082")]
+        public string TServer {
+            get {
+                return ((string)(this["TServer"]));
+            }
+            set {
+                this["TServer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://ns.e105.ru:3084")]
+        public string TVideoServer {
+            get {
+                return ((string)(this["TVideoServer"]));
+            }
+            set {
+                this["TVideoServer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
+        public string TLogin {
+            get {
+                return ((string)(this["TLogin"]));
+            }
+            set {
+                this["TLogin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TPass {
+            get {
+                return ((string)(this["TPass"]));
+            }
+            set {
+                this["TPass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <dictionary>
   <item>
@@ -93,54 +141,6 @@ namespace Band.Client.Infrastructure.Properties {
             }
             set {
                 this["CamerasConfigurator"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://62.113.49.111:8080")]
-        public string TServer {
-            get {
-                return ((string)(this["TServer"]));
-            }
-            set {
-                this["TServer"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://62.113.49.111:3084")]
-        public string TVideoServer {
-            get {
-                return ((string)(this["TVideoServer"]));
-            }
-            set {
-                this["TVideoServer"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
-        public string TLogin {
-            get {
-                return ((string)(this["TLogin"]));
-            }
-            set {
-                this["TLogin"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TPass {
-            get {
-                return ((string)(this["TPass"]));
-            }
-            set {
-                this["TPass"] = value;
             }
         }
     }
