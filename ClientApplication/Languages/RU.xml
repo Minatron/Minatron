@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LanguagesResource culture="ru-RU">
   <Shell>
-    <ConnectTitle>Соединение с сервером БД</ConnectTitle>
+    <Title>Мониторинг весовых нагрузок автомобилей</Title>
+    <ConnectTitle>Соединение с сервером</ConnectTitle>
     <ServerName>Сервер БД</ServerName>
     <DBName>Имя БД</DBName>
     <Connect>Соединиться</Connect>
@@ -24,5 +25,23 @@
       <RealTimeEnterException>Ошибка входа в режим реального времени!</RealTimeEnterException>
     </CameraErrors>
   </CameraNavigator>
-  
+  <Storage>
+    <PressRefreshAfterChange>Нажмите обновить после изменения фильтров</PressRefreshAfterChange>
+    <Page>страница </Page>
+    <Empty>Пусто</Empty>
+  </Storage>
+  <WeighData>
+    <Title>      ФГУ Упрдор «Россия».
+      Мостовой переход через р.Волга на 176 км. автодороги М-10 «Росссия».
+      База данных весовых нагрузок автомобилей.</Title>
+    <OpenCamerasView>Просмотр/Отчет</OpenCamerasView>
+    <CloseCamerasView>Список событий</CloseCamerasView>
+    
+    <Direction>Направление</Direction>
+    <Weight>Вес</Weight>
+    <Speed>Скорость</Speed>
+    <Time>Время</Time>
+    <SaintPetersburg>в Санкт-Петербург</SaintPetersburg>
+    <Moscow>в Москву</Moscow>
+  </WeighData>
 </LanguagesResource>

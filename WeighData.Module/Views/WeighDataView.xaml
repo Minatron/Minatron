@@ -12,12 +12,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <TextBlock Text="{lang:Title XPath=WeighData/Title}" Foreground="White" FontSize="14" FontWeight="Bold"/>
+        <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Foreground="White" Text="Нажмите обновить после изменения фильтров" VerticalAlignment="Center" Visibility="{Binding FilterManager.WasChanged, Converter={x:Static conv:False.ToCollapsed}}"/>
+                <TextBlock Foreground="White" Text="{lang:Title XPath=Storage/PressRefreshAfterChange}" VerticalAlignment="Center" Visibility="{Binding FilterManager.WasChanged, Converter={x:Static conv:False.ToCollapsed}}"/>
                 <TextBlock Foreground="White" FontFamily="Courier New" Text=" ►" VerticalAlignment="Center" FontSize="14" Visibility="{Binding FilterManager.WasChanged, Converter={x:Static conv:False.ToCollapsed}}"/>
                 <Menu HorizontalAlignment="Right" Background="Transparent">
                     <Menu.Resources>
@@ -51,11 +53,11 @@
             </StackPanel>
         </Grid>
 
-        <ContentControl Grid.Row="1" Content="{Binding FilterManager}"/>
-        
-        <TextBlock Grid.Row="2" Text="Пусто" HorizontalAlignment="Center" VerticalAlignment="Center"
+        <ContentControl Grid.Row="2" Content="{Binding FilterManager}"/>
+
+        <TextBlock Grid.Row="3" Text="{lang:Title XPath=Storage/Empty}" HorizontalAlignment="Center" VerticalAlignment="Center"
 						    Visibility="{Binding Page.IsEmpty, Converter={x:Static conv:False.ToCollapsed}}"/>
-        <Grid Grid.Row="2" Visibility="{Binding  Page.IsEmpty, Converter={x:Static conv:True.ToCollapsed}}">
+        <Grid Grid.Row="3" Visibility="{Binding  Page.IsEmpty, Converter={x:Static conv:True.ToCollapsed}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -70,10 +72,10 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" HorizontalAlignment="Center" Text="Направление" />
-                <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Время"/>
-                <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="Вес"/>
-                <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="Скорость" />
+                <TextBlock Grid.Column="0" HorizontalAlignment="Center" Text="{lang:Title XPath=WeighData/Direction}" />
+                <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{lang:Title XPath=WeighData/Time}"/>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{lang:Title XPath=WeighData/Weight}"/>
+                <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{lang:Title XPath=WeighData/Speed}" />
             </Grid>
             
             <ListBox Grid.Row="1" ItemsSource="{Binding Objects}" HorizontalContentAlignment="Stretch" x:Name="TaskList">
@@ -95,14 +97,27 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0"  VerticalAlignment="Center" Text="{Binding Course}"/>
+                            <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Course}">
+                                <ContentControl.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock x:Name="CopurseTitle"   Text="{lang:Title XPath=WeighData/Moscow}"/>
+                                        <DataTemplate.Triggers>
+                                            <DataTrigger Binding="{Binding}" Value="SaintPetersburg">
+                                                <DataTrigger.Setters>
+                                                    <Setter TargetName="CopurseTitle" Property="Text" Value="{lang:Title XPath=WeighData/SaintPetersburg}"/>
+                                                </DataTrigger.Setters>
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </ContentControl.ContentTemplate>
+                            </ContentControl>
                             <TextBlock Grid.Column="1"  VerticalAlignment="Center" Text="{Binding WeighTime}"/>
                             <TextBlock Grid.Column="2"  VerticalAlignment="Center" Text="{Binding Weigh, StringFormat='\{0\}т'}"/>
                             <TextBlock Grid.Column="3"  VerticalAlignment="Center" Text="{Binding AvgSpeed, StringFormat='\{0\}км/ч'}"/>
 
                             <Button Grid.Column="4" Command="{Binding DataContext.ShowCameraNavigatorCommand, ElementName=TaskList}" CommandParameter="{Binding}">
-                                
-                                    <TextBlock Text="просмотр" VerticalAlignment="Center"/>
+
+                                <TextBlock Text="{lang:Title XPath=WeighData/OpenCamerasView}" VerticalAlignment="Center"/>
                                 
                             </Button>
                             
@@ -121,7 +136,7 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="1" Margin="5,2,5,2" Padding="5,0,5,0" Command="{Binding PrevPageCommand}" Content="◄"  Visibility="{Binding Page.HasPrevPage, Converter={x:Static conv:False.ToHidden}}" FontFamily="Courier New" FontSize="10" Foreground="White"/>
                 <StackPanel Grid.Column="2" Orientation="Horizontal">
-                    <TextBlock Foreground="White" Text="страница " VerticalAlignment="Center"/>
+                    <TextBlock Foreground="White" Text="{lang:Title XPath=Storage/Page}" VerticalAlignment="Center"/>
                     <TextBlock Foreground="White" Text="{Binding Page.Number}" VerticalAlignment="Center"/>
                 </StackPanel>
                 <Button Grid.Column="3" Margin="5,2,5,2" Padding="5,2,5,2" Command="{Binding NextPageCommand}" Content="►"  Visibility="{Binding Page.HasNextPage, Converter={x:Static conv:False.ToHidden}}" FontFamily="Courier New" FontSize="10" Foreground="White"/>

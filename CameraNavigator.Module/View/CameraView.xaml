@@ -20,7 +20,7 @@
                         </Image>
 
                     </Border>
-                    <TextBlock x:Name="Error"   Foreground="White" Background="Red" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+                    <TextBlock x:Name="Error"   Foreground="White" Background="Red" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Visibility="Collapsed"/>
                     <TextBlock Text="{Binding CameraName}"  Margin="10,5,0,0"  Height="20" Foreground="White" VerticalAlignment="Top"/>
                     <TextBlock Text="{Binding Status}" Grid.Row="1"  x:Name="Status" TextAlignment="Center" />
                 </Grid>
@@ -33,6 +33,7 @@
                             <Setter TargetName="Border1" Property="BorderBrush" Value="White" ></Setter>
                             
                         </DataTrigger>
+                    <!--
                     <DataTrigger Binding="{Binding  CameraException}" Value="None">
                         <Setter TargetName="Error" Property="Text" Value="" ></Setter>
                         <Setter TargetName="Error" Property="Visibility" Value="Collapsed" ></Setter>
@@ -49,7 +50,7 @@
                     <DataTrigger Binding="{Binding  CameraException}" Value="RealTimeEnterException">
                         <Setter TargetName="Error" Property="Text" Value="{lang:Title XPath=CameraNavigator/CameraErrors/RealTimeEnterException}" ></Setter>
                     </DataTrigger>
-                    
+                    -->
                 </DataTemplate.Triggers>
                  
             </DataTemplate>
