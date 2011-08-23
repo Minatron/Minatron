@@ -19,7 +19,7 @@
                         <MenuItem.Header>
                             <WrapPanel>
                                 <Image Source="back.png" Width="16" Margin="-15,0,0,0" />
-                                <TextBlock Text="Список событий" Margin="10,1,0,0" Foreground="White"/>
+                                <TextBlock Text="{lang:Title XPath=WeighData/CloseCamerasView}" Margin="10,1,0,0" Foreground="White"/>
                             </WrapPanel>
                         </MenuItem.Header>
                     </MenuItem>

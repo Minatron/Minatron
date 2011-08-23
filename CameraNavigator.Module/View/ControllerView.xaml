@@ -41,13 +41,15 @@
             <ContentControl Content="{Binding}">
                 <ContentControl.ContentTemplate>
                     <DataTemplate>
-                        <TextBlock x:Name="Error"  Background="Red" Foreground="White" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>    
+                        <TextBlock x:Name="Error"  Background="Red" Foreground="White" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"></TextBlock>    
+                        <!--
                         <DataTemplate.Triggers>
                             <DataTrigger Binding="{Binding ControllerException}" Value="None">
                                 <DataTrigger.Setters>
                                     <Setter TargetName="Error" Property="Visibility" Value="Collapsed"/>        
                                 </DataTrigger.Setters>
                             </DataTrigger>
+                            
                             <DataTrigger Binding="{Binding ControllerException}" Value="LoginException">
                                 <DataTrigger.Setters>
                                     <Setter TargetName="Error" Property="Visibility" Value="Visible"/>
@@ -91,6 +93,7 @@
                                 </DataTrigger.Setters>
                             </DataTrigger>
                         </DataTemplate.Triggers>
+                        -->
                     </DataTemplate>
                 </ContentControl.ContentTemplate>
             </ContentControl>

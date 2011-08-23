@@ -6,7 +6,7 @@
 	    xmlns:conv="clr-namespace:Band.WPF.Convertors;assembly=WPF.Patterns"
         xmlns:inf="clr-namespace:Band.Client.Infrastructure;assembly=ClientApplication.Infrastructure"
         Icon="/ClientApplication;component/Under-construction.ico"
-		Title="Minatron" MinWidth="640" MinHeight="480" Background="#FF606060" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+		Title="{lang:Title XPath=Shell/Title}" MinWidth="640" MinHeight="480" Background="#FF606060" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ImageBrush x:Key="TextureBrush" ImageSource="/ClientApplication;component/Themes/texture.png" TileMode="Tile" Stretch="UniformToFill" Viewport="0,0,0.2,0.1" />
     </Window.Resources>
