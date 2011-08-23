@@ -9,6 +9,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System.Windows.Xps.Packaging;
+using System.Windows.Xps.Serialization;
 using Band.CameraNavigator.Module.View;
 using Band.Client.Infrastructure.Events;
 using Band.Storage.Minatron;
@@ -16,6 +17,7 @@ using Band.WPF.Commands;
 using CameraController;
 using Microsoft.Practices.Composite.Events;
 using Microsoft.Practices.Composite.Presentation.Events;
+using Microsoft.Win32;
 
 namespace Band.CameraNavigator.Module.Presenter
 {
@@ -43,8 +45,43 @@ namespace Band.CameraNavigator.Module.Presenter
             Stop = new DelegateCommand(StopInvoke, () => controller.IsLogin);
             FrameNext = new DelegateCommand(FrameNextInvoke, ()=> controller.IsLogin);
             FramePrev = new DelegateCommand(FramePrevInvoke, () => controller.IsLogin);
+            FrameMinusSecond = new DelegateCommand(FrameMinusSecondInvoke, () => controller.IsLogin);
+            FrameAddSecond = new DelegateCommand(FrameAddSecondInvoke, () => controller.IsLogin);
+            SaveXPS = new DelegateCommand(SaveToXps, () =>true);
             //_count = ControllerCameras.Count;
             InvokePropertyChanged("ControllerCameras");
+        }
+
+        private void SaveToXps()
+        {
+
+            var dialog = new SaveFileDialog
+                             {
+                                 
+                                 CheckPathExists = true,
+                                 Filter = "xps files (*.xps)|*.xps",
+                                 RestoreDirectory = true
+                             };
+            dialog.FileName = WData.WeighTime.ToString("dd-MM-yyyy_HH:mm:ss");
+
+            if ((bool) dialog.ShowDialog())
+            {
+                var view = new CamerasReportView(this);
+                SaveXpsDocument(dialog.FileName, (FlowDocument)view.Content);
+            }
+
+        }
+
+        private void FrameAddSecondInvoke()
+        {
+            _controller.AddSecond();
+            Refresh();
+        }
+
+        private void FrameMinusSecondInvoke()
+        {
+            _controller.MinusSecond();
+            Refresh();
         }
 
         private void BackButtonPushEventInvoke(object obj)
@@ -83,15 +120,29 @@ namespace Band.CameraNavigator.Module.Presenter
             _packageUri = new Uri(memorystreamDataXps);
             PackageStore.AddPackage(_packageUri, package);
             var xpsDocument = new XpsDocument(package, CompressionOption.Maximum, memorystreamDataXps);
+           
             var writer = XpsDocument.CreateXpsDocumentWriter(xpsDocument);
             var printTicket = new PrintTicket {PageMediaSize = new PageMediaSize(PageMediaSizeName.ISOA4)};
             printTicket.PageResolution = new PageResolution(150, 150);
             Dispatcher.CurrentDispatcher.Invoke(DispatcherPriority.Loaded,
                                                 new DispatcherOperationCallback(arg => null), null);
             writer.Write(((IDocumentPaginatorSource) data).DocumentPaginator, printTicket);
+
             Document = xpsDocument.GetFixedDocumentSequence();
             //xpsDocument.Close();
             InvokePropertyChanged("Document"); 
+        }
+
+        public void SaveXpsDocument(string path, FlowDocument data)
+        {
+            var xpsDocument = new XpsDocument(path, FileAccess.ReadWrite, CompressionOption.Maximum);
+            var writer = XpsDocument.CreateXpsDocumentWriter(xpsDocument);
+            var printTicket = new PrintTicket { PageMediaSize = new PageMediaSize(PageMediaSizeName.ISOA4) };
+            printTicket.PageResolution = new PageResolution(150, 150);
+            Dispatcher.CurrentDispatcher.Invoke(DispatcherPriority.Loaded,
+                                                new DispatcherOperationCallback(arg => null), null);
+            writer.Write(((IDocumentPaginatorSource)data).DocumentPaginator, printTicket);
+            xpsDocument.Close();
         }
 
         public FixedDocumentSequence Document { get; private set; }
@@ -157,6 +208,9 @@ namespace Band.CameraNavigator.Module.Presenter
         public ICommand Stop { get; private set; }
         public ICommand FrameNext { get; private set; }
         public ICommand FramePrev { get; private set; }
+        public ICommand FrameMinusSecond { get; private set; }
+        public ICommand FrameAddSecond { get; private set; }
+        public ICommand SaveXPS { get; private set; }
         public bool IsPlayingArchive
         {
             get { return !_controller.IsPlayingArchive; }

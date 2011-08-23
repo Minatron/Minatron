@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -18,9 +19,19 @@ namespace CameraController
         SeekException
     }
 
-   
+    public enum ControllerStates
+    {
+        Unknown,
+        Playing,
+        Stop,
+        Seek
+    }
+    
     public class Controller
     {
+
+        public ControllerStates State { get; private set; }
+
         public delegate void ControllerException(ControllerExceptions ex);
         public event ControllerException OnException;
         public void InvokeOnException(ControllerExceptions ex)
@@ -107,6 +118,7 @@ namespace CameraController
         public void SeekToTime(DateTime time)
         {
             if(!IsArchiveMode) return;
+            StopPlayArchive();
             try
             {
                 InvokeOnException(ControllerExceptions.None);
@@ -122,6 +134,8 @@ namespace CameraController
           
         }
         private bool _stopGetStatus = true;
+
+        string _currentData;
         private void GetStatus(object state)
         {
             _stopGetStatus = false;
@@ -131,7 +145,20 @@ namespace CameraController
                 try
                 {
                     var sr = _commander.GetStatus(_session, CurrentDirectionCameras[0].Data);
-                   CurrentDirectionCameras.ForEach(each=>each.SetStatus(sr));
+                    CurrentDirectionCameras.ForEach(each => each.SetStatus(sr));
+                    var str = sr.GetStatus(CurrentDirectionCameras[0].Data);
+                    var strngs = str.Split(new[] {' '}, 2);
+                    if (strngs[0] == "STOP") State = ControllerStates.Stop;
+                    else
+                    {
+                        State = ControllerStates.Unknown;
+                    }
+                    if (State == ControllerStates.Stop)
+                    {
+                        _currentData = strngs[1];
+                        DateTime dt;
+                        DateTime.TryParseExact(_currentData,"dd MMM HH:mm:ss.FFF",new CultureInfo("en-US"),DateTimeStyles.None,out dt);
+                    }
                 }
                 catch (Exception)
                 {
@@ -258,6 +285,26 @@ namespace CameraController
         public void CloseCurrentCameras()
         {
             SetToRealTime();
+        }
+        public void MinusSecond()
+        {
+
+            if (State == ControllerStates.Stop)
+            {
+               
+                DateTime dt;
+                DateTime.TryParseExact(_currentData, "dd MMM HH:mm:ss.FFF", new CultureInfo("en-US"), DateTimeStyles.None, out dt);
+                SeekToTime(dt.AddSeconds(-1));
+            }
+        }
+        public void AddSecond()
+        {
+            if (State == ControllerStates.Stop)
+            {
+                DateTime dt;
+                DateTime.TryParseExact(_currentData, "dd MMM HH:mm:ss.FFF", new CultureInfo("en-US"), DateTimeStyles.None, out dt);
+                SeekToTime(dt.AddSeconds(1));
+            }
         }
     }
 }
